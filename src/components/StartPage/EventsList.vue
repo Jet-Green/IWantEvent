@@ -95,10 +95,12 @@ function createEvent() {
       </a-row>
       <a-row type="flex" justify="space-between">
         <a-col>
-          <a-button @click="createEvent"> Создай концерт </a-button>
+          <a-button @click="createEvent" type="primary" shape="round">
+            Создать концерт
+          </a-button>
         </a-col>
         <a-col>
-          <a-button> Показать все </a-button>
+          <a-button type="primary" shape="round"> Показать все </a-button>
         </a-col>
       </a-row>
     </a-col>

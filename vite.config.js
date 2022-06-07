@@ -66,7 +66,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         modifyVars: {
-          'primary-color': '#1DA57A',
+          'primary-color': '#c0004e',
         },
         // modifyVars: getThemeVariables({
         //   dark: true,
