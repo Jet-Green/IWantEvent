@@ -88,7 +88,7 @@ onMounted(() => {
       </a-row>
       <a-row type="flex" justify="end">
         <a-col>
-          <a-button> Показать все </a-button>
+          <a-button type="primary" shape="round"> Показать все </a-button>
         </a-col>
       </a-row>
     </a-col>
