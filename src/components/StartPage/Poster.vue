@@ -43,7 +43,7 @@ onMounted(() => {
           <span class="text-h6 text-md-h4">Афиша</span>
         </a-col>
         <a-col>
-          <span class="material-symbols-outlined">tune</span>
+          <span class="mdi mdi-tune-variant"></span>
         </a-col>
       </a-row>
       <a-row>
