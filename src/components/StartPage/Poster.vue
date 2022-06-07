@@ -38,16 +38,16 @@ onMounted(() => {
 <template>
   <a-row type="flex" justify="center">
     <a-col :span="20">
-      <a-row>
-        <a-col type="flex" justify="start">
+      <a-row type="flex" justify="space-between">
+        <a-col>
           <span class="text-h6 text-md-h4">Афиша</span>
         </a-col>
-        <v-col class="justify-end d-flex">
-          <v-icon color="accent" icon="mdi-tune-variant"></v-icon>
-        </v-col>
+        <a-col>
+          <span class="material-symbols-outlined">tune</span>
+        </a-col>
       </a-row>
-      <a-row class="ma-0 pa-0">
-        <a-col class="ma-0 pa-0">
+      <a-row>
+        <a-col>
           <div ref="carousel_container" v-resize="onResize"></div>
           <Carousel
             :itemsToShow="postsCount"
@@ -60,20 +60,21 @@ onMounted(() => {
               :key="index"
               class="unselectable"
             >
-              <div class="carousel__item d-flex flex-wrap" flat tile>
+              <div
+                class="carousel__item"
+                style="display: flex; flex-wrap: wrap"
+              >
                 <v-card
                   class="card"
                   :class="cardsGroup.length == 1 ? 'first_card' : ''"
                   v-for="(card, i) in cardsGroup"
                   :key="i"
                 >
-                  <v-img
-                    class="bg-white"
-                    width="w-100"
-                    :aspect-ratio="1"
+                  <a-image
                     src="https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg"
-                    cover
-                  ></v-img>
+                    :preview="false"
+                    style="aspect-ratio: 1; object-fit: cover"
+                  ></a-image>
                 </v-card>
               </div>
             </Slide>
@@ -84,16 +85,15 @@ onMounted(() => {
           </Carousel>
         </a-col>
       </a-row>
-      <a-row>
-        <a-col> </a-col>
-        <a-col class="justify-end d-flex">
+      <a-row type="flex" justify="end">
+        <a-col>
           <a-button> Показать все </a-button>
         </a-col>
       </a-row>
     </a-col>
   </a-row>
 </template>
-<style lang="scss" >
+<style lang="scss">
 .carousel__item {
   min-width: 200px;
   aspect-ratio: 1/1;
@@ -116,6 +116,7 @@ onMounted(() => {
   background-color: white;
   box-sizing: content-box;
   box-shadow: 1px 2px 2px #c0004e;
+  color: black;
   &:active {
     box-shadow: 1px 1px 1px #c0004e;
     font-size: 18px;

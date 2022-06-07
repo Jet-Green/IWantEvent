@@ -8,30 +8,8 @@ const router = useRouter();
 
 const poster = reactive({
   cards: [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22,
+    23, 24, 25,
   ],
 });
 let carouselWidth = ref(0);
@@ -66,7 +44,7 @@ function createEvent() {
 </script>
 
 <template>
-  <a-row type="flex" justify="center" class="mt-3">
+  <a-row type="flex" justify="center">
     <a-col :span="20">
       <a-row type="flex" justify="space-between">
         <a-col type="flex" align="center">
@@ -85,8 +63,15 @@ function createEvent() {
             snapAlign="start"
             :wrap-around="true"
           >
-            <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
-              <div class="carousel__item" style="display: flex; flex-wrap: wrap">
+            <Slide
+              v-for="(cardsGroup, index) in cards"
+              :key="index"
+              class="unselectable"
+            >
+              <div
+                class="carousel__item"
+                style="display: flex; flex-wrap: wrap"
+              >
                 <div
                   class="card"
                   :class="cardsGroup.length == 1 ? 'first_card' : ''"
@@ -120,7 +105,4 @@ function createEvent() {
   </a-row>
 </template>
 <style scoped>
-.mt-3 {
-  margin-top: 12px;
-}
 </style>
