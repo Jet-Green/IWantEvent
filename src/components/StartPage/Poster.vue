@@ -31,6 +31,7 @@ const postsCount = computed(() => {
 });
 
 onMounted(() => {
+  window.addEventListener("resize", onResize);
   onResize();
 });
 </script>
@@ -43,12 +44,12 @@ onMounted(() => {
           <span class="text-h6 text-md-h4">Афиша</span>
         </a-col>
         <a-col>
-          <span class="mdi mdi-tune-variant"></span>
+          <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-col>
       </a-row>
       <a-row>
         <a-col>
-          <div ref="carousel_container" v-resize="onResize"></div>
+          <div ref="carousel_container"></div>
           <Carousel
             :itemsToShow="postsCount"
             :autoplay="15000"

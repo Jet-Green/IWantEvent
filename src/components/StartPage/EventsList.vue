@@ -51,7 +51,7 @@ function createEvent() {
           <span class="text-h6 text-md-h4">Собираемые концерты</span>
         </a-col>
         <a-col type="flex" justify="end" align="center">
-          <span class="mdi mdi-tune-variant"></span>
+          <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-col>
       </a-row>
       <a-row type="flex" justify="center">
