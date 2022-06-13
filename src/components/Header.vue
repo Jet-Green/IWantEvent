@@ -8,10 +8,14 @@ let query = ref("");
   <a-layout>
     <a-layout-header :style="{ background: 'black', padding: 0 }">
       <div>
-        <span class="material-symbols-outlined"> menu </span>
-        <span class="material-symbols-outlined"> person </span>
-        <span class="material-symbols-outlined"> pin_drop </span>
+        <span class="mdi mdi-24px mdi-map-marker-outline">Глазов</span>
+        <span class="mdi mdi-24px mdi-account-details"></span>
       </div>
     </a-layout-header>
   </a-layout>
 </template>
+<style scoped>
+span {
+  color: white;
+}
+</style>
