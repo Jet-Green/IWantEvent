@@ -5,24 +5,13 @@ let query = ref("");
 </script>
 
 <template>
-  <v-app-bar app class="bg-black text-white pt-0 pb-0">
-    <template v-slot:prepend>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-    </template>
-   <v-img :src="logo"></v-img>
-
-    <template v-slot:append>
-      <v-icon
-        style="font-size: 30px"
-        color="white"
-        icon="mdi-map-marker"
-      ></v-icon>
-      <span class="mr-4">Глазов</span>
-      <v-icon
-        style="font-size: 30px"
-        color="white"
-        icon="mdi-account-details-outline"
-      ></v-icon>
-    </template>
-  </v-app-bar>
+  <a-layout>
+    <a-layout-header :style="{ background: 'black', padding: 0 }">
+      <div>
+        <span class="material-symbols-outlined"> menu </span>
+        <span class="material-symbols-outlined"> person </span>
+        <span class="material-symbols-outlined"> pin_drop </span>
+      </div>
+    </a-layout-header>
+  </a-layout>
 </template>
