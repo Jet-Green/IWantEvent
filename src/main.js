@@ -7,7 +7,7 @@ import './assets/styles/styles.scss'
 import vuetify from './plugins/vuetify'
 // Ant
 import Antd from 'ant-design-vue';
-import 'ant-design-vue/dist/antd.css';
+import 'ant-design-vue/dist/antd.less';
 
 
 loadFonts()
