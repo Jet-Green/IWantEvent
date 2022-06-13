@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 let checked = ref(false);
-let eventType = ref("open");
+let eventType = ref(false);
 let offerCheckbox = ref(false);
 
 function toggleEvent(val) {
@@ -10,47 +10,35 @@ function toggleEvent(val) {
 }
 </script>
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
+     <a-row type="flex" justify="center" align="top" style="margin: 20px 0 0 0;">
+      <a-col :span="15" :md="15" :xs="22" :sm="18">
         <span class="text-h6 text-md-h4">Создать мероприятие</span>
-        <v-row>
-          <v-col>
+        <a-row style="margin: 20px 0 0 0;">
+          <a-col>
             Открытое мероприятие
-            <a-switch v-model:checked="checked" />
+            <a-switch v-model:checked="eventType"  />
             Закрытое мероприятие
-          </v-col>
-        </v-row>
-        <!-- <v-radio-group v-model="eventType" inline>
-          <v-radio value="closed">
-            <template v-slot:label></template>
-          </v-radio>
-          <v-radio value="open">
-            <template v-slot:label></template>
-          </v-radio>
-        </v-radio-group> -->
-
-        <div v-if="!checked">
-          <v-row>
-            <v-col cols="12" md="7">
-              Начните вводить имя артиста
-              <v-text-field density="compact" variant="outlined"></v-text-field>
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col cols="3">
-              <v-checkbox v-model="offerCheckbox">
-                <template v-slot:label>Принять условия оферты</template>
-              </v-checkbox>
-            </v-col>
-          </v-row>
-          <v-btn rounded="pill" color="accent" class="text-body-1">
-            Создать сбор
-          </v-btn>
-        </div>
+          </a-col>
+        </a-row>
+      <div v-if="!eventType">
+      <a-row>
+        <a-col :span="15" :xs="24" :md="12">
+          <a-input v-model:value="value" size="large" placeholder="Начните вводить имя артиста"  style="margin: 20px 0 20px 0;"/>
+        </a-col> 
+      </a-row>
+          <a-row>
+            <a-col>
+              <a-checkbox v-model:checked="checked" style="margin: 0 0 20px 0;">
+                Принять условия оферты 
+              </a-checkbox>
+            </a-col>
+          </a-row>
+          <a-button shape="round" type="primary" style="margin: 0 0 20px 0;"> 
+            Создать сбор 
+          </a-button> 
+      </div>
         <div v-else>Закрытое</div>
-      </v-col>
-    </v-row>
-  </v-container>
+      </a-col>
+    </a-row>
+  
 </template>
