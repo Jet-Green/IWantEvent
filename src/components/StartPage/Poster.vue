@@ -50,32 +50,13 @@ onMounted(() => {
       <a-row>
         <a-col>
           <div ref="carousel_container"></div>
-          <Carousel
-            :itemsToShow="postsCount"
-            :autoplay="15000"
-            snapAlign="start"
-            :wrap-around="true"
-          >
-            <Slide
-              v-for="(cardsGroup, index) in cards"
-              :key="index"
-              class="unselectable"
-            >
-              <div
-                class="carousel__item"
-                style="display: flex; flex-wrap: wrap"
-              >
-                <v-card
-                  class="card"
-                  :class="cardsGroup.length == 1 ? 'first_card' : ''"
-                  v-for="(card, i) in cardsGroup"
-                  :key="i"
-                >
-                  <a-image
-                    src="https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg"
-                    :preview="false"
-                    style="aspect-ratio: 1; object-fit: cover"
-                  ></a-image>
+          <Carousel :itemsToShow="postsCount" :autoplay="15000" snapAlign="start" :wrapAround="true">
+            <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
+              <div class="carousel__item" style="display: flex; flex-wrap: wrap">
+                <v-card class="card" :class="cardsGroup.length == 1 ? 'first_card' : ''" v-for="(card, i) in cardsGroup"
+                  :key="i">
+                  <a-image src="https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg"
+                    :preview="false" style="aspect-ratio: 1; object-fit: cover"></a-image>
                 </v-card>
               </div>
             </Slide>
@@ -106,6 +87,7 @@ onMounted(() => {
     width: 47%;
     height: 47%;
   }
+
   .first_card {
     width: 98%;
     height: 98%;
@@ -118,6 +100,7 @@ onMounted(() => {
   box-sizing: content-box;
   box-shadow: 1px 2px 2px #c0004e;
   color: black;
+
   &:active {
     box-shadow: 1px 1px 1px #c0004e;
     font-size: 18px;

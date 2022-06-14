@@ -57,32 +57,14 @@ function createEvent() {
       <a-row type="flex" justify="center">
         <a-col>
           <div ref="carousel_container"></div>
-          <Carousel
-            :itemsToShow="postsCount"
-            :autoplay="15000"
-            snapAlign="start"
-            :wrap-around="true"
-          >
-            <Slide
-              v-for="(cardsGroup, index) in cards"
-              :key="index"
-              class="unselectable"
-            >
-              <div
-                class="carousel__item"
-                style="display: flex; flex-wrap: wrap"
-              >
-                <div
-                  class="card"
-                  :class="cardsGroup.length == 1 ? 'first_card' : ''"
-                  v-for="(card, i) in cardsGroup"
-                  :key="i"
-                >
+          <Carousel :itemsToShow="postsCount" :autoplay="15000" snapAlign="start" :wrapAround="true">
+            <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
+              <div class="carousel__item" style="display: flex; flex-wrap: wrap">
+                <div class="card" :class="cardsGroup.length == 1 ? 'first_card' : ''" v-for="(card, i) in cardsGroup"
+                  :key="i">
                   <a-image
                     src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
-                    :preview="false"
-                    style="aspect-ratio: 1; object-fit: cover"
-                  ></a-image>
+                    :preview="false" style="aspect-ratio: 1; object-fit: cover"></a-image>
                 </div>
               </div>
             </Slide>
