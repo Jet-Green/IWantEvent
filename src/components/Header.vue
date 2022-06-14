@@ -7,9 +7,12 @@ let query = ref("");
 <template>
   <a-layout>
     <a-layout-header :style="{ background: 'black', padding: 0 }">
-      <div>
+      <div style="display: flex; justify-content: right">
         <span class="mdi mdi-24px mdi-map-marker-outline">Глазов</span>
-        <span class="mdi mdi-24px mdi-account-details"></span>
+        <span
+          class="mdi mdi-24px mdi-account-details"
+          style="margin: 0 16px 0 32px"
+        ></span>
       </div>
     </a-layout-header>
   </a-layout>
