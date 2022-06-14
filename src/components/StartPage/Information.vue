@@ -1,15 +1,20 @@
 <script setup>
+import information1 from "../../assets/images/information-1.jpeg";
+import information2 from "../../assets/images/information-2.jpg";
 </script>
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" sm="6" >
-        <v-card min-height="150" max-height="245" class="mx-auto rounded-xl h-100 w-100">
+      <v-col cols="12" sm="6">
+        <v-card
+          min-height="150"
+          max-height="245"
+          class="mx-auto rounded-xl h-100 w-100"
+        >
           <v-img
-            src="https://www.culture.ru/storage/images/55394bda85cf4f824e17587ad2f6684e/e5e002d22a411ed5e971c342537c56d7.jpg"
+            :src="information1"
             class="white--text align-end rounded-xl h-100 pa-3"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-    
             cover
           >
             <p class="text-white">
@@ -25,11 +30,11 @@
       <v-col cols="12" sm="6">
         <div class="d-flex flex-column justify-stretch h-100">
           <v-card
-            max-height="110" 
+            max-height="110"
             class="mx-auto rounded-xl mb-6 bg-yellow w-100 h-100"
           >
             <v-img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Paramore_Concert.jpg/240px-Paramore_Concert.jpg"
+              :src="information2"
               class="white--text align-end rounded-xl h-100 pa-3"
               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
               cover
@@ -39,7 +44,7 @@
           </v-card>
           <v-card
             max-height="110"
-            class="mx-auto rounded-xl  bg-grey w-100 h-100"
+            class="mx-auto rounded-xl bg-grey w-100 h-100"
           >
             <v-img
               src="https://scorpions-bilety.ru/photos/scorpions_12.jpg"
