@@ -39,12 +39,9 @@ onMounted(() => {
 <template>
   <a-row type="flex" justify="center">
     <a-col :span="20">
-      <a-row type="flex" justify="space-between">
+      <a-row>
         <a-col>
           <span class="text-h6 text-md-h4">Афиша</span>
-        </a-col>
-        <a-col>
-          <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-col>
       </a-row>
       <a-row>
