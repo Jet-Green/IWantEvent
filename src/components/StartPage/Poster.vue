@@ -37,13 +37,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <a-row type="flex" justify="center">
+  <a-row type="flex" justify="center" style="margin-top: 16px;">
     <a-col :span="20">
-      <a-row>
-        <a-col>
-          <span class="text-h6 text-md-h4">Афиша</span>
-        </a-col>
-      </a-row>
+      <a-typography-title :level="2">
+        Афиша
+      </a-typography-title>
       <a-row>
         <a-col>
           <div ref="carousel_container"></div>

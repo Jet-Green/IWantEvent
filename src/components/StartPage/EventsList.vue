@@ -44,13 +44,9 @@ function createEvent() {
 </script>
 
 <template>
-  <a-row type="flex" justify="center">
+  <a-row type="flex" justify="center" style="margin-top: 16px;">
     <a-col :span="20">
-      <a-row>
-        <a-col type="flex" align="center">
-          <span class="text-h6 text-md-h4">Собираемые концерты</span>
-        </a-col>
-      </a-row>
+      <a-typography-title :level="2">Собираемые концерты</a-typography-title>
       <a-row type="flex" justify="center">
         <a-col>
           <div ref="carousel_container"></div>

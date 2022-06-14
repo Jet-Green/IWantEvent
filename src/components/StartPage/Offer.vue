@@ -10,13 +10,15 @@ function createEvent() {
     <a-row type="flex" justify="center" style="padding: 16px">
       <a-col :span="10" :xs="24" :md="12">
         <div>
-          <h1>Организуй свой концерт в твоем городе!</h1>
-          <h4 style="padding: 16px">
+          <a-typography-title>
+            Организуй свой концерт в твоем городе!
+          </a-typography-title>
+          <a-typography-title :level="5">
             Добро пожаловать в систему организации концертов. <br />
             Купи билет на будущий концерт в своём городе! <br />
             Пригласи друзей! <br />
             Наслаждайся моментом!
-          </h4>
+          </a-typography-title>
         </div>
         <div>
           <a-button @click="createEvent" type="primary" shape="round">
