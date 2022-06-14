@@ -46,12 +46,9 @@ function createEvent() {
 <template>
   <a-row type="flex" justify="center">
     <a-col :span="20">
-      <a-row type="flex" justify="space-between">
+      <a-row>
         <a-col type="flex" align="center">
           <span class="text-h6 text-md-h4">Собираемые концерты</span>
-        </a-col>
-        <a-col type="flex" justify="end" align="center">
-          <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-col>
       </a-row>
       <a-row type="flex" justify="center">
@@ -68,7 +65,6 @@ function createEvent() {
                 </div>
               </div>
             </Slide>
-
             <template #addons>
               <Navigation />
             </template>
@@ -81,8 +77,11 @@ function createEvent() {
             Создать концерт
           </a-button>
         </a-col>
-        <a-col>
+        <a-col style="display: flex; flex-direction: row;">
           <a-button type="primary" shape="round"> Показать все </a-button>
+          <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px;">
+            <span class="mdi mdi-24px mdi-tune-variant"></span>
+          </a-button>
         </a-col>
       </a-row>
     </a-col>
