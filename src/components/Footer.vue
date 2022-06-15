@@ -3,10 +3,8 @@ import { ref } from "vue";
 </script>
 
 <template>
-  <v-footer class="footer bg-black">
-    <v-container
-      class="text-white d-flex justify-space-around align-start pa-5 flex-wrap"
-    >
+  <a-layout-footer class="footer">
+    <v-container class="text-white d-flex justify-space-around align-start pa-5 flex-wrap">
       <div class="col-12 d-flex flex-column ma-2">
         <v-text class="font-weight-black pb-2">Оплата и Документы</v-text>
         <v-text>Конфидециальность</v-text>
@@ -26,12 +24,12 @@ import { ref } from "vue";
         <v-text>Регистрация</v-text>
       </div>
     </v-container>
-  </v-footer>
+  </a-layout-footer>
 </template>
 <style lang="scss" scoped>
 .footer {
   font-size: 14px;
-
+  background: black;
 
   @media (max-width: 768px) {
     font-size: 12px;
