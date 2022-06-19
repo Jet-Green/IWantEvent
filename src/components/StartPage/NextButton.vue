@@ -1,6 +1,11 @@
 <script setup></script>
 <template>
-  <v-btn icon="mdi-arrow-right-bold" color="secondary"> </v-btn>
+  <a-button type="primary" shape="circle" :size="size">
+    <template #icon>
+      <span class="mdi mdi-24px mdi-arrow-right-thin"></span>
+    </template>
+  </a-button>
 </template>
 
-<style></style>
+<style>
+</style>
