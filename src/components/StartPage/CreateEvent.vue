@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 let offerCheckboxChecked = ref(false);
 let eventType = ref(false);
@@ -11,6 +14,7 @@ function toggleEvent(val) {
 </script>
 <template>
   <a-col :xs="24">
+    <a-page-header title="Главная" @back="router.push('/')" />
     <a-row type="flex" justify="center" align="top" style="margin: 20px 0 0 0">
       <a-col :span="15" :md="15" :xs="22" :sm="18">
         <a-typography-title>Создать мероприятие</a-typography-title>
