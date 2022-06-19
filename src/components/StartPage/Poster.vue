@@ -37,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <a-row type="flex" justify="center" style="margin-top: 16px;">
+  
     <a-col :span="20">
       <a-typography-title :level="2">
         Афиша
@@ -71,7 +71,7 @@ onMounted(() => {
         </a-col>
       </a-row>
     </a-col>
-  </a-row>
+ 
 </template>
 <style lang="scss">
 .carousel__item {

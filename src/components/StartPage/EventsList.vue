@@ -44,7 +44,7 @@ function createEvent() {
 </script>
 
 <template>
-  <a-row type="flex" justify="center" style="margin-top: 16px;">
+
     <a-col :span="20">
       <a-typography-title :level="2">Собираемые концерты</a-typography-title>
       <a-row type="flex" justify="center">
@@ -81,7 +81,7 @@ function createEvent() {
         </a-col>
       </a-row>
     </a-col>
-  </a-row>
+ 
 </template>
 <style scoped>
 </style>

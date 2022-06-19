@@ -13,7 +13,7 @@ function toggleEvent(val) {
 }
 </script>
 <template>
-  <a-col :xs="24">
+  <a-col :xs="24" :sm="20">
     <a-page-header title="Главная" @back="router.push('/')" />
     <a-row type="flex" justify="center" align="top" style="margin: 20px 0 0 0">
       <a-col :span="15" :md="15" :xs="22" :sm="18">
