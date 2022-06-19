@@ -1,3 +1,9 @@
-.ant-btn-primary {
-    font-weight: bold !important;
+
+@import url("./ant_style.scss");
+
+html,
+body,
+.v-main {
+    overflow-x: hidden;
+
 }

@@ -3,8 +3,8 @@ import Information from "../components/StartPage/Information.vue";
 </script>
 
 <template>
-  <div class="mb-4">
+  <a-row type="flex" justify="center" >
     <router-view />
     <Information />
-  </div>
+   </a-row>
 </template>
