@@ -16,7 +16,7 @@ function toggleEvent(val) {
   <a-col :xs="24" :sm="20">
     <a-page-header title="Главная" @back="router.push('/')" />
     <a-row type="flex" justify="center" align="top" style="margin: 20px 0 0 0">
-      <a-col :span="15" :md="15" :xs="22" :sm="18">
+      <a-col>
         <a-typography-title>Создать мероприятие</a-typography-title>
         <a-row style="margin: 20px 0 0 0">
           <a-col>
@@ -28,7 +28,7 @@ function toggleEvent(val) {
         </a-row>
         <div v-if="!eventType">
           <a-row>
-            <a-col :span="15" :xs="24" :md="12">
+            <a-col >
               <a-input v-model:value="artistName" size="large" placeholder="Начните вводить имя артиста"
                 style="margin: 20px 0 20px 0" />
             </a-col>

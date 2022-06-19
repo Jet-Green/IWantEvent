@@ -44,7 +44,6 @@ function createEvent() {
 </script>
 
 <template>
-
     <a-col :span="20">
       <a-typography-title :level="2">Собираемые концерты</a-typography-title>
       <a-row type="flex" justify="center">
@@ -74,7 +73,7 @@ function createEvent() {
           </a-button>
         </a-col>
         <a-col style="display: flex; flex-direction: row;">
-          <a-button type="primary" shape="round"> Показать все </a-button>
+          <!-- <a-button type="primary" shape="round"> Показать все </a-button> -->
           <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px;">
             <span class="mdi mdi-24px mdi-tune-variant"></span>
           </a-button>
