@@ -1,10 +1,14 @@
 <script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Navigation, Slide } from "vue3-carousel";
-import { ref, reactive, computed, onMounted } from "vue";
+import { ref, reactive, watch, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useAppStateStore } from "../../stores/appState";
 
+const appState = useAppStateStore();
 const router = useRouter();
+
+let isMobile = ref(false);
 
 const poster = reactive({
   cards: [
@@ -29,6 +33,10 @@ let onResize = () => {
   carouselWidth.value = carousel_container.value.clientWidth;
 };
 
+function createEvent() {
+  router.push("/create-event");
+}
+
 const postsCount = computed(() => {
   return carouselWidth.value / 210;
 });
@@ -37,50 +45,68 @@ onMounted(() => {
   window.addEventListener("resize", onResize);
   onResize();
 });
-
-function createEvent() {
-  router.push("/create-event");
-}
 </script>
 
 <template>
-    <a-col :span="20">
-      <a-typography-title :level="2">Собираемые концерты</a-typography-title>
-      <a-row type="flex" justify="center">
-        <a-col>
-          <div ref="carousel_container"></div>
-          <Carousel :itemsToShow="postsCount" :autoplay="15000" snapAlign="start" :wrapAround="true">
-            <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
-              <div class="carousel__item" style="display: flex; flex-wrap: wrap">
-                <div class="card" :class="cardsGroup.length == 1 ? 'first_card' : ''" v-for="(card, i) in cardsGroup"
-                  :key="i">
-                  <a-image
-                    src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
-                    :preview="false" style="aspect-ratio: 1; object-fit: cover"></a-image>
-                </div>
+  <a-col :span="20">
+    <a-typography-title :level="2">Собираемые концерты</a-typography-title>
+    <a-row type="flex" justify="center">
+      <a-col>
+        <div ref="carousel_container"></div>
+        <Carousel
+          :itemsToShow="postsCount"
+          :autoplay="15000"
+          snapAlign="start"
+          :wrapAround="true"
+        >
+          <Slide
+            v-for="(cardsGroup, index) in cards"
+            :key="index"
+            class="unselectable"
+          >
+            <div class="carousel__item" style="display: flex; flex-wrap: wrap">
+              <div
+                class="card"
+                :class="cardsGroup.length == 1 ? 'first_card' : ''"
+                v-for="(card, i) in cardsGroup"
+                :key="i"
+              >
+                <a-image
+                  src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
+                  :preview="false"
+                  style="aspect-ratio: 1; object-fit: cover"
+                ></a-image>
               </div>
-            </Slide>
-            <template #addons>
-              <Navigation />
-            </template>
-          </Carousel>
-        </a-col>
-      </a-row>
-      <a-row type="flex" justify="space-between">
-        <a-col>
-          <a-button @click="createEvent" type="primary" shape="round">
-            Создать концерт
-          </a-button>
-        </a-col>
-        <a-col style="display: flex; flex-direction: row;">
-          <!-- <a-button type="primary" shape="round"> Показать все </a-button> -->
-          <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px;">
-            <span class="mdi mdi-24px mdi-tune-variant"></span>
-          </a-button>
-        </a-col>
-      </a-row>
-    </a-col>
- 
+            </div>
+          </Slide>
+          <template #addons>
+            <Navigation />
+          </template>
+        </Carousel>
+      </a-col>
+    </a-row>
+    <a-row type="flex" justify="space-between">
+      <a-col>
+        <a-button @click="createEvent" type="primary" shape="round">
+          Создать концерт
+        </a-button>
+      </a-col>
+      <a-col style="display: flex; flex-direction: row">
+        {{ isMobile }}
+        <div v-if="!isMobile">
+          <a-button type="primary" shape="round"> Показать все </a-button>
+        </div>
+        <div v-else>fgdfg</div>
+        <a-button
+          type="primary"
+          shape="round"
+          style="display: flex; align-items: center; margin: 0 0 0 8px"
+        >
+          <span class="mdi mdi-24px mdi-tune-variant"></span>
+        </a-button>
+      </a-col>
+    </a-row>
+  </a-col>
 </template>
 <style scoped>
 </style>
