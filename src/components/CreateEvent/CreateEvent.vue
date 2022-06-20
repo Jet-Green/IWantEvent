@@ -19,7 +19,7 @@ function toggleEvent(val) {
     <a-row type="flex" justify="center" align="top" style="margin: 20px 0 0 0">
       <a-col>
         <a-typography-title>Создать мероприятие</a-typography-title>
-        <a-row style="margin: 20px 0 0 0">
+        <a-row style="margin: 20px 0 20px 0">
           <a-col>
             Открытое мероприятие
             <a-switch v-model:checked="eventType" />
