@@ -6,7 +6,8 @@
     "build": "vite build",
     "test:unit": "vitest --environment jsdom",
     "dev": "vite",
-    "preview": "vite preview --port 5050"
+    "preview": "vite preview --port 5050",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
