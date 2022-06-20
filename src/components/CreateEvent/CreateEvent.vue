@@ -2,11 +2,12 @@
 import { ref } from "vue";
 import { useRouter } from 'vue-router'
 
+import OpenEvent from './OpenEvent.vue'
+import CloseEvent from './CloseEvent.vue'
+
 const router = useRouter()
 
-let offerCheckboxChecked = ref(false);
 let eventType = ref(false);
-let artistName = ref('')
 
 function toggleEvent(val) {
   eventType.value = val;
@@ -26,25 +27,13 @@ function toggleEvent(val) {
             <span class="mdi mdi-24px mdi-information-outline"></span>
           </a-col>
         </a-row>
+        <!-- Отделить в другую компоненту -->
         <div v-if="!eventType">
-          <a-row>
-            <a-col >
-              <a-input v-model:value="artistName" size="large" placeholder="Начните вводить имя артиста"
-                style="margin: 20px 0 20px 0" />
-            </a-col>
-          </a-row>
-          <a-row>
-            <a-col>
-              <a-checkbox v-model:checked="offerCheckboxChecked" style="margin: 0 0 20px 0">
-                Принять условия оферты
-              </a-checkbox>
-            </a-col>
-          </a-row>
-          <a-button shape="round" type="primary" style="margin: 0 0 20px 0">
-            Создать сбор
-          </a-button>
+          <OpenEvent/>
         </div>
-        <div v-else>Закрытое</div>
+        <div v-else>
+          <CloseEvent/>
+        </div>
       </a-col>
     </a-row>
   </a-col>
