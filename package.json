@@ -4,6 +4,7 @@
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",
+    "deploy": "bash deploy.sh",
     "test:unit": "vitest --environment jsdom",
     "dev": "vite",
     "preview": "vite preview --port 5050"

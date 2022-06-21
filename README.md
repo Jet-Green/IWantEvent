@@ -1,7 +1,7 @@
 # IWantEvent
 ## Deploy to GitHub pages
 ```sh
-git checkout gh-pages
+git checkout master
 ```
 ```sh
 npm run deploy
