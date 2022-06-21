@@ -1,14 +1,12 @@
 <script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Navigation, Slide } from "vue3-carousel";
-import { ref, reactive, watch, computed, onMounted } from "vue";
+import { ref, reactive, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAppStateStore } from "../../stores/appState";
 
 const appState = useAppStateStore();
 const router = useRouter();
-
-let isMobile = ref(false);
 
 const poster = reactive({
   cards: [
@@ -42,8 +40,8 @@ const postsCount = computed(() => {
 });
 
 onMounted(() => {
-  window.addEventListener("resize", onResize);
   onResize();
+  window.addEventListener("resize", onResize);
 });
 </script>
 
@@ -85,18 +83,25 @@ onMounted(() => {
         </Carousel>
       </a-col>
     </a-row>
-    <a-row type="flex" justify="space-between">
+    <a-row type="flex" justify="space-between" style="margin-top: 8px">
       <a-col>
         <a-button @click="createEvent" type="primary" shape="round">
           Создать концерт
         </a-button>
       </a-col>
       <a-col style="display: flex; flex-direction: row">
-        {{ isMobile }}
-        <div v-if="!isMobile">
+        <div v-if="!appState.isMobile">
           <a-button type="primary" shape="round"> Показать все </a-button>
         </div>
-        <div v-else>fgdfg</div>
+        <div v-else>
+          <a-button
+            type="primary"
+            shape="round"
+            style="display: flex; align-items: center"
+          >
+            <span class="mdi mdi-24px mdi-arrow-up-drop-circle-outline"></span>
+          </a-button>
+        </div>
         <a-button
           type="primary"
           shape="round"
