@@ -1,5 +1,7 @@
 set -e
 
+rm -r -f dist
+
 npm run build
 
 cd dist
