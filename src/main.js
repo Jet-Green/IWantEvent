@@ -6,7 +6,6 @@ import { loadFonts } from './plugins/webfontloader'
 import { createPinia } from 'pinia'
 
 import './assets/styles/styles.scss'
-import vuetify from './plugins/vuetify'
 // Ant
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.less';
@@ -18,5 +17,4 @@ createApp(App)
   .use(createPinia())
   .use(Antd)
   .use(router)
-  .use(vuetify)
   .mount('#app')

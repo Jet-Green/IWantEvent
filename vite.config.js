@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 
 import vue from '@vitejs/plugin-vue'
-import vuetify from '@vuetify/vite-plugin'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const path = require('path')
@@ -11,9 +10,6 @@ export default defineConfig({
   plugins: [
     vue(),
     // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
-    vuetify({
-      autoImport: true,
-    }),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'images/apple-touch-icon.png'],

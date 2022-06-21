@@ -114,4 +114,10 @@ onMounted(() => {
   </a-col>
 </template>
 <style scoped>
+.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 </style>

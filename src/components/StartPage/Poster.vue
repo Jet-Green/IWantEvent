@@ -57,7 +57,7 @@ onMounted(() => {
             class="unselectable"
           >
             <div class="carousel__item" style="display: flex; flex-wrap: wrap">
-              <v-card
+              <div
                 class="card"
                 :class="cardsGroup.length == 1 ? 'first_card' : ''"
                 v-for="(card, i) in cardsGroup"
@@ -68,7 +68,7 @@ onMounted(() => {
                   :preview="false"
                   style="aspect-ratio: 1; object-fit: cover"
                 ></a-image>
-              </v-card>
+              </div>
             </div>
           </Slide>
 
