@@ -1,11 +1,11 @@
 <script setup>
 </script>
 <template>
+<div class="info_container">
   <a-row
     type="flex"
     justify="center"
     :gutter="[16, 16]"
-    style="margin: 16px"
     :xs="24"
     :sm="20"
   >
@@ -26,6 +26,7 @@
       </a-row>
     </a-col>
   </a-row>
+  </div>
 </template>
 <style lang="scss" scoped>
 .first_info,
@@ -43,7 +44,7 @@
   display: flex;
   justify-content: flex-end;
 }
-.ma-4 {
-  margin: 4px;
+.info_container{
+  margin: 24px;
 }
 </style>

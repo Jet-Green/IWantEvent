@@ -14,10 +14,10 @@ function toggleEvent(val) {
 }
 </script>
 <template>
-  <a-col :xs="24" :sm="20">
+  <a-col  :sm="20">
     <a-page-header title="Главная" @back="router.push('/')" />
-    <a-row type="flex" justify="center" align="top" style="margin: 20px 0 0 0">
-      <a-col>
+    <a-row type="flex" justify="center" style="margin: 20px 0 0 0">
+      <a-col :xs="24" :md="16">
         <a-typography-title>Создать мероприятие</a-typography-title>
         <a-row style="margin: 20px 0 20px 0">
           <a-col>

@@ -8,3 +8,8 @@ import Information from "../components/StartPage/Information.vue";
     <Information />
    </a-row>
 </template>
+<style lang="scss" scoped>
+Information{
+  margin: 8px;
+}
+</style>

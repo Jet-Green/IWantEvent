@@ -38,8 +38,8 @@ const prev = () => {
 
 <template>
   <a-row>
-    <a-col>
-      <a-steps v-model:current="current">
+    <a-col >
+      <a-steps v-model:current="current" :responsive="false" >
         <a-step />
         <a-step />
         <a-step />

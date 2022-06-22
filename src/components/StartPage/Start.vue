@@ -8,3 +8,4 @@ import Poster from "./Poster.vue";
   <EventsList />
   <Poster />
 </template>
+
