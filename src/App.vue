@@ -25,7 +25,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", this.onResize, { passive: true });
+  window.removeEventListener("resize", onResize, { passive: true });
 });
 </script>
 
