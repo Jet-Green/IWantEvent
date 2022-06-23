@@ -29,6 +29,7 @@ let query = ref("");
     :closable="false"
     :visible="visible"
     @close="showDrawer"
+    width="200"
     
   >
     <p >Личный кабинет</p>
