@@ -14,16 +14,16 @@ function toggleEvent(val) {
 }
 </script>
 <template>
-  <a-col :sm="20" style="paddig:">
+  <a-col :sm="20" >
     <a-page-header title="Главная" @back="router.push('/')" />
-    <a-row type="flex" justify="center" style="padding: 16px">
+    <a-row type="flex" justify="center" style="padding: 0 16px 16px 16px;">
       <a-col :xs="24" :md="16">
         <a-typography-title>Создать мероприятие</a-typography-title>
         <a-row >
           <a-col>
-            Открытое мероприятие
+            Открытое
             <a-switch v-model:checked="isCloseEvent" />
-            Закрытое мероприятие
+            Закрытое
             <span class="mdi mdi-24px mdi-information-outline"></span>
           </a-col>
         </a-row>
