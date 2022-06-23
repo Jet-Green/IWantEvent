@@ -58,7 +58,7 @@
       ><span style="line-height: 32px">Количество гостей:</span></a-col
     >
     <a-col :xs="8">
-      <a-input-number min="1">
+      <a-input-number type="number"  min="1">
         <template #addonAfter>
           <span style="opacity: 0.6">чел. </span>
         </template>
