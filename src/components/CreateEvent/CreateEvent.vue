@@ -14,9 +14,9 @@ function toggleEvent(val) {
 }
 </script>
 <template>
-  <a-col :sm="20">
+  <a-col :sm="20" style="paddig:">
     <a-page-header title="Главная" @back="router.push('/')" />
-    <a-row type="flex" justify="center" style="padding-bottom: 16px">
+    <a-row type="flex" justify="center" style="padding: 16px">
       <a-col :xs="24" :md="16">
         <a-typography-title>Создать мероприятие</a-typography-title>
         <a-row >
