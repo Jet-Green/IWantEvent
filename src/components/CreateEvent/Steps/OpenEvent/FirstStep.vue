@@ -8,9 +8,9 @@ let artistName = ref('')
 </script>
 <template>
   <a-row>
-    <a-col>
+    <a-col :span="24" :sm="14">
       <a-input v-model:value="artistName" size="large" placeholder="Начните вводить имя артиста"
-        style="margin: 20px 0 20px 0; width: 400px" />
+        style="margin: 20px 0 20px 0;" />
     </a-col>
   </a-row>
   <a-row>

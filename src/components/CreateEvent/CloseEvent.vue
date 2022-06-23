@@ -37,44 +37,40 @@ const prev = () => {
 </script>
 
 <template>
-  <a-row>
-    <a-col >
-      <a-steps v-model:current="current" :responsive="false" >
-        <a-step />
-        <a-step />
-        <a-step />
-        <a-step />
-        <a-step />
-      </a-steps>
-      <!-- <div class="steps-content" v-html="steps[current].content">
+  <a-steps v-model:current="current" :responsive="false">
+    <a-step />
+    <a-step />
+    <a-step />
+    <a-step />
+    <a-step />
+  </a-steps>
+  <!-- <div class="steps-content" v-html="steps[current].content">
       </div> -->
-      <div v-if="current == 0">
-        <Close1 />
-      </div>
-      <div v-if="current == 1">
-        <Close2 />
-      </div>
-      <div v-if="current == 2">
-        <Close3 />
-      </div>
-      <div v-if="current == 3">
-        <Close4 />
-      </div>
-      <div v-if="current == 4">
-        <Close5 />
-      </div>
+  <div v-if="current == 0">
+    <Close1 />
+  </div>
+  <div v-if="current == 1">
+    <Close2 />
+  </div>
+  <div v-if="current == 2">
+    <Close3 />
+  </div>
+  <div v-if="current == 3">
+    <Close4 />
+  </div>
+  <div v-if="current == 4">
+    <Close5 />
+  </div>
 
-      <div class="steps-action">
-        <a-button v-if="current < steps.length - 1" type="primary" @click="next">
-          Next
-        </a-button>
+  <div class="steps-action">
+    <a-button v-if="current < steps.length - 1" type="primary" @click="next">
+      Next
+    </a-button>
 
-        <a-button v-if="current == steps.length - 1" type="primary"> Done </a-button>
+    <a-button v-if="current == steps.length - 1" type="primary"> Done </a-button>
 
-        <a-button v-if="current > 0" style="margin-left: 8px" @click="prev">
-          Previous
-        </a-button>
-      </div>
-    </a-col>
-  </a-row>
+    <a-button v-if="current > 0" style="margin-left: 8px" @click="prev">
+      Previous
+    </a-button>
+  </div>
 </template>
