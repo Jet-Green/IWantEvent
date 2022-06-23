@@ -13,7 +13,7 @@ function createEvent() {
       <a-row type="flex" justify="center" style="padding: 16px">
         <a-col  :xs="24" :md="18" :lg="14">
           <div class="auto_size">
-            <a-typography-title id="title">
+            <a-typography-title class="title">
               Организуй свой концерт в твоем городе!
             </a-typography-title>
             <a-typography-title :level="5" id="subtitle">
@@ -40,7 +40,7 @@ function createEvent() {
   background-size: cover;
 }
 .auto_size {
-  #title {
+  .title {
     font-size: clamp(30px, 2.7vw, 38px);
   }
   #subtitle {
