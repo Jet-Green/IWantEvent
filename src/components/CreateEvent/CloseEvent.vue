@@ -63,14 +63,27 @@ const prev = () => {
   </div>
 
   <div class="steps-action">
-    <a-button v-if="current < steps.length - 1" type="primary" @click="next">
-      Next
+    <a-button
+      v-if="current < steps.length - 1"
+      type="primary"
+      shape="round"
+      @click="next"
+    >
+      Далее
     </a-button>
 
-    <a-button v-if="current == steps.length - 1" type="primary"> Done </a-button>
+    <a-button v-if="current == steps.length - 1" type="primary" shape="round">
+      Создать
+    </a-button>
 
-    <a-button v-if="current > 0" style="margin-left: 8px" @click="prev">
-      Previous
+    <a-button
+      v-if="current > 0"
+      type="primary"
+      shape="round"
+      style="margin-left: 8px"
+      @click="prev"
+    >
+      Назад
     </a-button>
   </div>
 </template>
