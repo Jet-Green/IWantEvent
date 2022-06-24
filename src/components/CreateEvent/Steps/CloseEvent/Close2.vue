@@ -39,6 +39,31 @@
       <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px;"></span>
     </a-col>
   </a-row>
+
+  <a-row class="cards-container">
+    <a-col v-for="i in 10" :key="i">
+      <div v-if="i != 10" class="card">
+        <div class="card-background" :style="{
+          'background-image': 'url(https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png)'
+        }">
+        </div>
+        <div class="content">
+          <a-typography-title :level="4">Глазов Арена</a-typography-title>
+          2500 мест
+        </div>
+      </div>
+      <div v-else class="card last-card">
+        <div class="card-background"
+          style="display: flex; justify-content: center; align-items: center; opacity: 1 !impotant;">
+          <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
+        </div>
+        <div class="content" style="text-align: center">
+          Добавьте свою площадку
+        </div>
+      </div>
+    </a-col>
+  </a-row>
+
   <a-checkbox>Выбрать все места проведения</a-checkbox>
   <a-row type="flex" justify="space-between" class="section">
     <a-col>
@@ -57,12 +82,74 @@
       <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px;"></span>
     </a-col>
   </a-row>
-  <a-checkbox>Выбрать всех ведущих</a-checkbox>
+  <a-row class="cards-container">
+    <a-col v-for="i in 4" :key="i">
+      <div v-if="i != 4" class="card">
+        <div class="card-background" :style="{
+          'background-image': 'url(https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg)'
+        }">
+        </div>
+        <div class="content">
+          <a-typography-title :level="5">Адександр Золототарёв</a-typography-title>
+        </div>
+      </div>
+      <div v-else class="card last-card">
+        <div class="card-background"
+          style="display: flex; justify-content: center; align-items: center; opacity: 1 !impotant;">
+          <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
+        </div>
+        <div class="content" style="text-align: center">
+          Добавьте ведущего
+        </div>
+      </div>
+    </a-col>
+  </a-row>
+  <a-checkbox style="margin: 8px 0 8px 0">Выбрать всех ведущих</a-checkbox>
 </template>
 <style scoped>
 .container {
   display: flex;
   flex-direction: row;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  position: relative;
+
+  width: 120px;
+  aspect-ratio: 1;
+
+  margin: 0 8px 8px 0;
+}
+
+.last-card {
+  display: flex;
+  background: rgb(240, 240, 240);
+}
+
+.card .content {
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  margin: 8px;
+}
+
+.card-background {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  opacity: 0.75;
+  border-radius: 8px;
 }
 
 .section {
