@@ -43,11 +43,11 @@ function addArtist() {
       </a-col>
     </a-row>
     <ArtistCard :artistCardInfoProps="card" />
-    <div v-if="index == selectedArtists.length - 1" class="section">
-      <a-button type="link" @click="addArtist">
-        Добавьте ещё +
-      </a-button>
-    </div>
+  </div>
+  <div class="section">
+    <a-button type="link" @click="addArtist">
+      Добавьте ещё +
+    </a-button>
   </div>
   <div class="card last-card">
     <div class="card-background">
