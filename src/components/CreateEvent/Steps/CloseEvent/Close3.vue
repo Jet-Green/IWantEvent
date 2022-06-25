@@ -84,10 +84,10 @@ function addArtist() {
 .card .content {
   position: relative;
   z-index: 1;
-}
 
-.content {
-  margin: 8px;
+  .content {
+    margin: 8px;
+  }
 }
 
 .card-background {
