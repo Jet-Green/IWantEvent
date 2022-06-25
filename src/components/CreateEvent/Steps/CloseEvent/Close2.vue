@@ -1,5 +1,13 @@
 <script setup>
+import { ref, reactive } from "vue";
 import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
+import AddPlace from "../../Forms/AddPlace.vue";
+
+const addPlace = ref(false);
+
+const showModal = () => {
+  addPlace.value = true;
+};
 </script>
 
 <template>
@@ -59,28 +67,8 @@ import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
   <a-row class="cards-container">
     <div v-for="i in 10" :key="i">
       <EventsPlaceCard />
-
-      <!-- <div v-if="i != 10" class="card">
-        <div class="card-background" :style="{
-          'background-image': 'url(https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png)'
-        }">
-        </div>
-        <div class="content">
-          <a-typography-title :level="4">Глазов Арена</a-typography-title>
-          2500 мест
-        </div>
-      </div>
-      <div v-else class="card last-card">
-        <div class="card-background"
-          style="display: flex; justify-content: center; align-items: center; opacity: 1 !impotant;">
-          <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
-        </div>
-        <div class="content" style="text-align: center">
-          Добавьте свою площадку
-        </div>
-      </div> -->
     </div>
-    <div class="add_place">
+    <div class="add_place" @click="showModal">
       Добавь место
       <span
         class="mdi mdi-48px mdi-plus"
@@ -148,6 +136,18 @@ import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
     </a-col>
   </a-row>
   <a-checkbox style="margin: 8px 0 8px 0">Выбрать всех ведущих</a-checkbox>
+
+  <!-- Modal for addPlace -->
+
+  <a-modal
+    v-model:visible="addPlace"
+    title="Добавление площадки"
+    @ok="handleOk"
+  >
+    <AddPlace />
+  </a-modal>
+
+  <!--End Modal for addPlace  -->
 </template>
 
 <style lang="scss" scoped>
@@ -171,10 +171,10 @@ import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
 
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-   &:active {
+  &:active {
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.3);
-    padding:2px;
-    font-size:98%;
+    padding: 2px;
+    font-size: 98%;
   }
 }
 
