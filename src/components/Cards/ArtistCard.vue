@@ -38,6 +38,7 @@ let artistCardInfo = props.artistCardInfoProps;
 
   .for_text {
     font-weight: bold;
+    text-align: center;
     padding: 2px;
     text-transform: uppercase;
   }
