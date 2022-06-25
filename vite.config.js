@@ -1,13 +1,20 @@
-import { defineConfig } from 'vite'
+import {
+  defineConfig
+} from 'vite'
 
 import vue from '@vitejs/plugin-vue'
-import { VitePWA } from 'vite-plugin-pwa'
+import {
+  VitePWA
+} from 'vite-plugin-pwa'
 
 const path = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig(
-  ({ command, mode }) => {
+  ({
+    command,
+    mode
+  }) => {
     let baseUrl = mode == 'development' ? '/' : '/IWantEvent/'
     return {
       base: baseUrl,
@@ -22,8 +29,7 @@ export default defineConfig(
             short_name: 'Хочу концерт',
             description: 'Description of your app',
             theme_color: '#ffffff',
-            icons: [
-              {
+            icons: [{
                 src: 'android-chrome-192x192.png',
                 sizes: '192x192',
                 type: 'image/png',
@@ -56,7 +62,9 @@ export default defineConfig(
         })
 
       ],
-      define: { 'process.env': {} },
+      define: {
+        'process.env': {}
+      },
       resolve: {
         alias: {
           '@': path.resolve(__dirname, 'src'),
@@ -67,6 +75,7 @@ export default defineConfig(
           less: {
             modifyVars: {
               'primary-color': '#c0004e',
+              'success-color': '#5dfd35'
             },
             // modifyVars: getThemeVariables({
             //   dark: true,

@@ -2,8 +2,10 @@
 import { ref, reactive } from "vue";
 import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
 import AddPlace from "../../Forms/AddPlace.vue";
+import PlaceFilter from "../../Forms/PlaceFilter.vue";
 
 const addPlace = ref(false);
+const placeFilter = ref(false);
 
 const showModal = () => {
   addPlace.value = true;
@@ -53,6 +55,7 @@ const showModal = () => {
       <a-button
         type="primary"
         shape="round"
+        @click="placeFilter = !placeFilter"
         style="display: flex; align-items: center; margin: 0 0 0 8px"
       >
         <span class="mdi mdi-24px mdi-tune-variant"></span>
@@ -64,7 +67,9 @@ const showModal = () => {
     </a-col>
   </a-row>
 
-  <a-row class="cards-container">
+  <div v-if="placeFilter"><PlaceFilter /></div>
+
+  <a-row v-if="!placeFilter" class="cards-container">
     <div v-for="i in 10" :key="i">
       <EventsPlaceCard />
     </div>
@@ -77,7 +82,7 @@ const showModal = () => {
     </div>
   </a-row>
 
-  <a-checkbox>Выбрать все места проведения</a-checkbox>
+  <a-checkbox v-if="!placeFilter">Выбрать все места проведения</a-checkbox>
   <a-row type="flex" justify="space-between" class="section">
     <a-col>
       <a-typography-text> Ведущий </a-typography-text>
