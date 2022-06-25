@@ -36,7 +36,7 @@ function addArtist() {
         <a-input placeholder="Начните водить имя" v-model:value="selectedArtists[card.number - 1].artistName"></a-input>
       </a-col>
       <a-col style="display: flex; flex-direction: row;">
-        <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px">
+        <a-button style="display: flex; align-items: center; margin: 0 0 0 8px">
           <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-button>
         <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
@@ -50,12 +50,7 @@ function addArtist() {
     </div>
   </div>
   <div class="card last-card">
-    <div class="card-background" style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1 !impotant;
-          ">
+    <div class="card-background">
       <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
     </div>
     <div class="content" style="text-align: center">Добавьте своего артиста</div>
@@ -91,13 +86,20 @@ function addArtist() {
 }
 
 .card-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   z-index: 0;
   position: absolute;
+
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+
   background-size: cover;
+
   opacity: 0.75;
   border-radius: 8px;
 }
