@@ -1,6 +1,5 @@
 <script setup>
 import { reactive } from 'vue'
-
 import ArtistCard from '../../../../components/Cards/ArtistCard.vue'
 
 let selectedArtists = reactive([{
