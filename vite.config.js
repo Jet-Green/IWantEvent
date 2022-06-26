@@ -17,6 +17,9 @@ export default defineConfig(
   }) => {
     let baseUrl = mode == 'development' ? '/' : '/IWantEvent/'
     return {
+      test: {
+        environment: 'jsdom'
+      },
       base: baseUrl,
       plugins: [
         vue(),
@@ -30,33 +33,33 @@ export default defineConfig(
             description: 'Description of your app',
             theme_color: '#ffffff',
             icons: [{
-                src: 'android-chrome-192x192.png',
-                sizes: '192x192',
-                type: 'image/png',
-              },
-              {
-                src: 'android-chrome-512x512.png',
-                sizes: '512x512',
-                type: 'image/png',
-              },
-              {
-                src: 'apple-touch-icon.png',
-                sizes: '180x180',
-                type: 'image/png',
-              },
+              src: 'android-chrome-192x192.png',
+              sizes: '192x192',
+              type: 'image/png',
+            },
+            {
+              src: 'android-chrome-512x512.png',
+              sizes: '512x512',
+              type: 'image/png',
+            },
+            {
+              src: 'apple-touch-icon.png',
+              sizes: '180x180',
+              type: 'image/png',
+            },
 
-              {
-                src: 'mstile-150x150.png',
-                sizes: '150x150',
-                type: 'image/png',
-              },
+            {
+              src: 'mstile-150x150.png',
+              sizes: '150x150',
+              type: 'image/png',
+            },
 
-              {
-                src: 'pwa-512x512.png',
-                sizes: '512x512',
-                type: 'image/png',
-                purpose: 'any maskable',
-              }
+            {
+              src: 'pwa-512x512.png',
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'any maskable',
+            }
             ]
           }
         })
