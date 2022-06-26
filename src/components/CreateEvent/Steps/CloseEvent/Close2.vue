@@ -7,6 +7,10 @@ import PlaceFilter from "../../Forms/PlaceFilter.vue";
 const addPlace = ref(false);
 const placeFilter = ref(false);
 
+const hidePlaceFilter = () => {
+  placeFilter.value = false;
+};
+
 const showModal = () => {
   addPlace.value = true;
 };
@@ -67,7 +71,7 @@ const showModal = () => {
     </a-col>
   </a-row>
 
-  <div v-if="placeFilter"><PlaceFilter /></div>
+  <div v-if="placeFilter"><PlaceFilter @hide-filter="hidePlaceFilter" /></div>
 
   <a-row v-if="!placeFilter" class="cards-container">
     <div v-for="i in 10" :key="i">
