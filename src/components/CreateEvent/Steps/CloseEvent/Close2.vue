@@ -3,13 +3,22 @@ import { ref, reactive } from "vue";
 import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
 import AddPlace from "../../Forms/AddPlace.vue";
 import PlaceFilter from "../../Forms/PlaceFilter.vue";
+import PartnerFilter from "../../Forms/PartnerFilter.vue";
 
 const addPlace = ref(false);
 const placeFilter = ref(false);
+const partnerFilter = ref(false);
+
+const incrCounter = function (value) {
+  console.log(value);
+};
 
 const hidePlaceFilter = () => {
   placeFilter.value = false;
 };
+// const hidePartnerFilter = () => {
+//   partnerFilter.value = false;
+// };
 
 const showModal = () => {
   addPlace.value = true;
@@ -19,8 +28,8 @@ const showModal = () => {
 <template>
   <a-row type="flex" justify="space-between" class="section">
     <a-typography-text style="margin-bottom: 16px"
-      >На этом шаге вы можете воспользоваться помощью организатора или создать
-      мероприятие сами.
+      >На этом шаге вы можете воспользоваться помощью организатора или создать мероприятие
+      сами.
     </a-typography-text>
     <a-col>
       <a-typography-text>Организатор</a-typography-text>
@@ -37,15 +46,11 @@ const showModal = () => {
       >
         <span class="mdi mdi-24px mdi-tune-variant"></span>
       </a-button>
-      <span
-        class="mdi mdi-24px mdi-information-outline"
-        style="margin-left: 16px"
-      ></span>
+      <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
     </a-col>
   </a-row>
   <a-typography-text
-    >На втором этапе важно выбрать место проведения и нанять
-    ведущего</a-typography-text
+    >На втором этапе важно выбрать место проведения и нанять ведущего</a-typography-text
   >
   <a-row type="flex" justify="space-between" class="section">
     <a-col>
@@ -64,10 +69,7 @@ const showModal = () => {
       >
         <span class="mdi mdi-24px mdi-tune-variant"></span>
       </a-button>
-      <span
-        class="mdi mdi-24px mdi-information-outline"
-        style="margin-left: 16px"
-      ></span>
+      <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
     </a-col>
   </a-row>
 
@@ -79,10 +81,7 @@ const showModal = () => {
     </div>
     <div class="add_place" @click="showModal">
       Добавь место
-      <span
-        class="mdi mdi-48px mdi-plus"
-        style="height: 48px; width: 48px"
-      ></span>
+      <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
     </div>
   </a-row>
 
@@ -96,19 +95,22 @@ const showModal = () => {
       <a-input></a-input>
     </a-col>
     <a-col class="container">
+      <!-- !!!! -->
       <a-button
         type="primary"
         shape="round"
+        @click="partnerFilter = !partnerFilter"
         style="display: flex; align-items: center; margin: 0 0 0 8px"
       >
         <span class="mdi mdi-24px mdi-tune-variant"></span>
       </a-button>
-      <span
-        class="mdi mdi-24px mdi-information-outline"
-        style="margin-left: 16px"
-      ></span>
+      <!-- !!!! -->
+      <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
     </a-col>
   </a-row>
+
+  <div v-if="partnerFilter"><PartnerFilter @counter-event="(n) => incrCounter(n)" /></div>
+
   <a-row class="cards-container">
     <a-col v-for="i in 4" :key="i">
       <div v-if="i != 4" class="card">
@@ -120,9 +122,7 @@ const showModal = () => {
           }"
         ></div>
         <div class="content">
-          <a-typography-title :level="5"
-            >Адександр Золототарёв</a-typography-title
-          >
+          <a-typography-title :level="5">Адександр Золототарёв</a-typography-title>
         </div>
       </div>
       <div v-else class="card last-card">
@@ -135,10 +135,7 @@ const showModal = () => {
             opacity: 1 !impotant;
           "
         >
-          <span
-            class="mdi mdi-48px mdi-plus"
-            style="height: 48px; width: 48px"
-          ></span>
+          <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
         </div>
         <div class="content" style="text-align: center">Добавьте ведущего</div>
       </div>
@@ -148,11 +145,7 @@ const showModal = () => {
 
   <!-- Modal for addPlace -->
 
-  <a-modal
-    v-model:visible="addPlace"
-    title="Добавление площадки"
-    @ok="handleOk"
-  >
+  <a-modal v-model:visible="addPlace" title="Добавление площадки" @ok="handleOk">
     <AddPlace />
   </a-modal>
 
