@@ -1,6 +1,11 @@
 # IWantEvent
-
-This template should help get you started developing with Vue 3 in Vite.
+## Deploy to GitHub pages
+```sh
+git checkout master
+```
+```sh
+npm run deploy
+```
 
 ## Recommended IDE Setup
 

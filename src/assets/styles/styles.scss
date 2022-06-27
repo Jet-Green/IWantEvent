@@ -1,9 +1,17 @@
 
 @import url("./ant_style.scss");
+@import url("./animations.scss");
 
 html,
-body,
-.v-main {
+body {
     overflow-x: hidden;
 
 }
+input{
+    border-radius: 20px !important;
+}
+.ma-16 {
+    margin: 16px;
+  }
+
+ 

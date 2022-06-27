@@ -2,6 +2,9 @@
 import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 import { ref, reactive, computed, onMounted } from "vue";
+import { useAppStateStore } from "@/stores/appState";
+
+const appState = useAppStateStore();
 
 const poster = reactive({
   cards: [
@@ -37,41 +40,69 @@ onMounted(() => {
 </script>
 
 <template>
-  
-    <a-col :span="20">
-      <a-typography-title :level="2">
-        Афиша
-      </a-typography-title>
-      <a-row>
-        <a-col>
-          <div ref="carousel_container"></div>
-          <Carousel :itemsToShow="postsCount" :autoplay="15000" snapAlign="start" :wrapAround="true">
-            <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
-              <div class="carousel__item" style="display: flex; flex-wrap: wrap">
-                <v-card class="card" :class="cardsGroup.length == 1 ? 'first_card' : ''" v-for="(card, i) in cardsGroup"
-                  :key="i">
-                  <a-image src="https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg"
-                    :preview="false" style="aspect-ratio: 1; object-fit: cover"></a-image>
-                </v-card>
+  <a-col :span="20">
+    <a-typography-title :level="2"> Афиша </a-typography-title>
+    <a-row>
+      <a-col>
+        <div ref="carousel_container"></div>
+        <Carousel
+          :itemsToShow="postsCount"
+          :autoplay="15000"
+          snapAlign="start"
+          :wrapAround="true"
+        >
+          <Slide
+            v-for="(cardsGroup, index) in cards"
+            :key="index"
+            class="unselectable"
+          >
+            <div class="carousel__item" style="display: flex; flex-wrap: wrap">
+              <div
+                class="card"
+                :class="cardsGroup.length == 1 ? 'first_card' : ''"
+                v-for="(card, i) in cardsGroup"
+                :key="i"
+              >
+                <a-image
+                  src="https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg"
+                  :preview="false"
+                  style="aspect-ratio: 1; object-fit: cover"
+                ></a-image>
               </div>
-            </Slide>
+            </div>
+          </Slide>
 
-            <template #addons>
-              <Navigation />
-            </template>
-          </Carousel>
-        </a-col>
-      </a-row>
-      <a-row type="flex" justify="end">
-        <a-col style="display: flex; flex-direction: row;">
+          <template #addons>
+            <Navigation />
+          </template>
+        </Carousel>
+      </a-col>
+    </a-row>
+    <a-row type="flex" justify="end" style="margin-top: 8px">
+      <a-col style="display: flex; flex-direction: row">
+        <div v-if="!appState.isMobile">
           <a-button type="primary" shape="round"> Показать все </a-button>
-          <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px;">
-            <span class="mdi mdi-24px mdi-tune-variant"></span>
+        </div>
+        <div v-else>
+          <a-button
+            type="primary"
+            shape="round"
+            style="display: flex; align-items: center"
+          >
+            <span class="mdi mdi-24px mdi-arrow-up-drop-circle-outline"></span>
           </a-button>
-        </a-col>
-      </a-row>
-    </a-col>
- 
+        </div>
+
+        <a-button
+          type="primary"
+          shape="round"
+          style="display: flex; align-items: center; margin: 0 0 0 8px"
+        >
+          <span class="mdi mdi-24px mdi-tune-variant"></span>
+        </a-button>
+      </a-col>
+    </a-row>
+  </a-col>
 </template>
 <style lang="scss">
 .carousel__item {
