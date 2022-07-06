@@ -9,7 +9,11 @@ import {
 
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
+import  lessToJs  from 'less-vars-to-js';
+
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, 'src/assets/styles/antd_default.less'), 'utf8'));
 
 // https://vitejs.dev/config/
 export default defineConfig(
@@ -85,10 +89,7 @@ export default defineConfig(
       css: {
         preprocessorOptions: {
           less: {
-            modifyVars: {
-              'primary-color': '#c0004e',
-              'btn-danger-bg': '#709d5a'
-            },
+            modifyVars: themeVariables,
             javascriptEnabled: true
           }
         }
