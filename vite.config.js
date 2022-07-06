@@ -7,6 +7,8 @@ import {
   VitePWA
 } from 'vite-plugin-pwa'
 
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 const path = require('path')
 
 // https://vitejs.dev/config/
@@ -22,6 +24,13 @@ export default defineConfig(
       },
       base: baseUrl,
       plugins: [
+        Components({
+          resolvers: [
+            AntDesignVueResolver({importStyle: "less"}),
+          ],
+          dts: true,
+          include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/, /\.jsx$/]
+        }),
         vue(),
         // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
         VitePWA({
@@ -78,16 +87,12 @@ export default defineConfig(
           less: {
             modifyVars: {
               'primary-color': '#c0004e',
-              'success-color': '#5dfd35'
+              'btn-danger-bg': '#709d5a'
             },
-            // modifyVars: getThemeVariables({
-            //   dark: true,
-            //   // compact: true,
-            // }),
-            javascriptEnabled: true,
-          },
-        },
-      },
+            javascriptEnabled: true
+          }
+        }
+    },
       /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
       resolve: {
         extensions: [
