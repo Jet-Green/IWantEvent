@@ -5,7 +5,11 @@
   let date=ref('10 сентября 2022')
   let time=ref('22:00-00:00')
   let count=ref('1000 человек')
-  let txt=ref('Текст запроса')
+  function addRequest(){
+    let request=document.createElement('request')
+    let requests=document.getElementById('requests')
+    requests.appendChild(request)
+  }
 </script>
 
 <template>
@@ -58,8 +62,11 @@
       Партнёры
     </a-col>
   </a-row>
-  <request></request>
-  <a-button type="link" style="padding:0; margin:10px 0px 20px 0px">+ Добавить ещё запрос</a-button>
+  <a-row>Если у вас сложный заказ или вы что-то не нашли, сделайте запрос... А вдруг...</a-row>
+  <div id="requests">
+    <request></request>
+  </div>
+  <a-button type="link" style="padding:0; margin:10px 0px 20px 0px" onclick="addRequest()">+ Добавить ещё запрос</a-button>
   <a-row>При создании заявки все выбранные участники получат уведомление</a-row>
   <a-row>Среднее время ответа составляет 12 часов</a-row>
 </template>
