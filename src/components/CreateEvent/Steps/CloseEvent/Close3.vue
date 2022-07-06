@@ -1,24 +1,34 @@
 <script setup>
-import { reactive } from 'vue'
-import ArtistCard from '../../../../components/Cards/ArtistCard.vue'
+import { reactive, ref } from "vue";
+import ArtistCard from "../../../../components/Cards/ArtistCard.vue";
+import ArtistFilter from "../../Forms/ArtistFilter.vue";
 
-let selectedArtists = reactive([{
-  number: 1,
-  artistName: 'Руки Вверх',
-  image: 'https://i.scdn.co/image/ab67616d0000b2738d8519ff4ee9a3d773bcecd9'
-}, {
-  number: 2,
-  artistName: 'Руки Вниз(текст переполняет)',
-  image: 'https://i.scdn.co/image/ab67616d0000b2738d8519ff4ee9a3d773bcecd9'
-}])
+let selectedArtists = reactive([
+  {
+    number: 1,
+    artistName: "Руки Вверх",
+    image: "https://i.scdn.co/image/ab67616d0000b2738d8519ff4ee9a3d773bcecd9",
+  },
+  {
+    number: 2,
+    artistName: "Руки Вниз(текст переполняет)",
+    image: "https://i.scdn.co/image/ab67616d0000b2738d8519ff4ee9a3d773bcecd9",
+  },
+]);
+
+const artistFilter = ref(false);
+
+const hideArtistFilter = () => {
+  artistFilter.value = false;
+};
 
 function addArtist() {
-  let number = selectedArtists[selectedArtists.length - 1].number
+  let number = selectedArtists[selectedArtists.length - 1].number;
   selectedArtists.push({
     number: number + 1,
-    artistName: '',
-    image: ''
-  })
+    artistName: "",
+    image: "",
+  });
 }
 </script>
 
@@ -26,34 +36,55 @@ function addArtist() {
   <a-row class="section">
     <a-typography-text>Теперь важно определиться с артистами</a-typography-text>
   </a-row>
-  <div v-for="(card, index) in selectedArtists" :key="index" class="section">
-    <a-row type="flex" justify="space-between">
-      <a-col>
-        <a-typography-text>Артист №{{ card.number }}</a-typography-text>
-      </a-col>
-      <a-col :span="12">
-        <a-input placeholder="Начните водить имя" v-model:value="selectedArtists[card.number - 1].artistName"></a-input>
-      </a-col>
-      <a-col style="display: flex; flex-direction: row;">
-        <a-button style="display: flex; align-items: center; margin: 0 0 0 8px">
-          <span class="mdi mdi-24px mdi-tune-variant"></span>
-        </a-button>
-        <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
-      </a-col>
-    </a-row>
-    <ArtistCard :artistCardInfoProps="card" />
-  </div>
-  <div class="section">
-    <a-button type="link" @click="addArtist">
-      Добавьте ещё +
+  <a-row justify="end">
+    <a-button
+      type="primary"
+      shape="round"
+      @click="artistFilter = !artistFilter"
+      style="display: flex; align-items: center; margin: 0 0 0 8px"
+    >
+      <span class="mdi mdi-24px mdi-tune-variant"></span>
     </a-button>
-  </div>
-  <div class="card last-card">
-    <div class="card-background">
-      <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
+  </a-row>
+  <div v-if="!artistFilter">
+    <div v-for="(card, index) in selectedArtists" :key="index" class="section">
+      <a-row type="flex" justify="space-between">
+        <a-col>
+          <a-typography-text>Артист №{{ card.number }}</a-typography-text>
+        </a-col>
+        <a-col :span="12">
+          <a-input
+            placeholder="Начните водить имя"
+            v-model:value="selectedArtists[card.number - 1].artistName"
+          ></a-input>
+        </a-col>
+        <a-col style="display: flex; flex-direction: row">
+          <span
+            class="mdi mdi-24px mdi-information-outline"
+            style="margin-left: 16px"
+          ></span>
+        </a-col>
+      </a-row>
+      <ArtistCard :artistCardInfoProps="card" />
     </div>
-    <div class="content" style="text-align: center">Добавьте своего артиста</div>
+
+    <div class="section">
+      <a-button type="link" @click="addArtist"> Добавьте ещё + </a-button>
+    </div>
+
+    <div class="card last-card">
+      <div class="card-background">
+        <span
+          class="mdi mdi-48px mdi-plus"
+          style="height: 48px; width: 48px"
+        ></span>
+      </div>
+      <div class="content" style="text-align: center">
+        Добавьте своего артиста
+      </div>
+    </div>
   </div>
+  <div v-else><ArtistFilter @hide-filter="hideArtistFilter" /></div>
 </template>
 <style lang="scss" scoped>
 .section {

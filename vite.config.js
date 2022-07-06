@@ -7,7 +7,13 @@ import {
   VitePWA
 } from 'vite-plugin-pwa'
 
-const path = require('path')
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import fs from 'fs'
+import path from 'path'
+import  lessToJs  from 'less-vars-to-js';
+
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, 'src/assets/styles/antd_default.less'), 'utf8'));
 
 // https://vitejs.dev/config/
 export default defineConfig(
@@ -22,6 +28,13 @@ export default defineConfig(
       },
       base: baseUrl,
       plugins: [
+        Components({
+          resolvers: [
+            AntDesignVueResolver({importStyle: "less"}),
+          ],
+          dts: true,
+          include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/, /\.jsx$/]
+        }),
         vue(),
         // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
         VitePWA({
@@ -76,18 +89,11 @@ export default defineConfig(
       css: {
         preprocessorOptions: {
           less: {
-            modifyVars: {
-              'primary-color': '#c0004e',
-              'success-color': '#5dfd35'
-            },
-            // modifyVars: getThemeVariables({
-            //   dark: true,
-            //   // compact: true,
-            // }),
-            javascriptEnabled: true,
-          },
-        },
-      },
+            modifyVars: themeVariables,
+            javascriptEnabled: true
+          }
+        }
+    },
       /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
       resolve: {
         extensions: [
