@@ -62,6 +62,7 @@ declare module '@vue/runtime-core' {
     PartnerCard: typeof import('./src/components/Cards/PartnerCard.vue')['default']
     PlaceFilter: typeof import('./src/components/CreateEvent/Forms/PlaceFilter.vue')['default']
     Poster: typeof import('./src/components/StartPage/Poster.vue')['default']
+    Request: typeof import('./src/components/CreateEvent/Steps/CloseEvent/Request.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Start: typeof import('./src/components/StartPage/Start.vue')['default']
