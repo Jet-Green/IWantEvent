@@ -57,6 +57,7 @@ const showModal = () => {
     </a-col>
     <a-col class="container">
       <a-button
+        :danger="placeFilter"
         type="primary"
         shape="round"
         @click="placeFilter = !placeFilter"

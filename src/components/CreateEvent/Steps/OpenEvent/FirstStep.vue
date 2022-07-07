@@ -20,7 +20,7 @@ let artistName = ref('')
       </a-checkbox>
     </a-col>
   </a-row>
-  <a-button danger shape="round" type="primary" style="margin: 0 0 20px 0" @click="$emit('nextStep')">
+  <a-button shape="round" type="primary" style="margin: 0 0 20px 0" @click="$emit('nextStep')">
     Создать сбор
   </a-button>
 </template>

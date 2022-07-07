@@ -38,6 +38,7 @@ function addArtist() {
   </a-row>
   <a-row justify="end">
     <a-button
+      :danger="artistFilter"
       type="primary"
       shape="round"
       @click="artistFilter = !artistFilter"
