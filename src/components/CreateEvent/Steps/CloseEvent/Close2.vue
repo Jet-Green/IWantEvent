@@ -6,6 +6,9 @@ import PlaceFilter from "../../Forms/PlaceFilter.vue";
 
 const addPlace = ref(false);
 const placeFilter = ref(false);
+const isOrganizer = ref(false);
+const isPlace = ref(false);
+const isCompere = ref(false);
 
 const hidePlaceFilter = () => {
   placeFilter.value = false;
@@ -17,19 +20,22 @@ const showModal = () => {
 </script>
 
 <template>
-  <a-row type="flex" justify="space-between" class="section">
+  <div class="pt-16">
     <a-typography-text style="margin-bottom: 16px"
-      >На этом шаге вы можете воспользоваться помощью организатора или создать
-      мероприятие сами.
+      >Выбери организатора или создай мероприятие сами.
     </a-typography-text>
+  </div>
+
+  <a-row type="flex" justify="space-between" class="section">
     <a-col>
       <a-typography-text>Организатор</a-typography-text>
-      <a-switch style="margin-left: 16px"> </a-switch>
+      <a-switch v-model:checked="isOrganizer" style="margin-left: 16px">
+      </a-switch>
     </a-col>
-    <a-col :span="12">
+    <a-col v-if="isOrganizer" :span="12">
       <a-input></a-input>
     </a-col>
-    <a-col class="container">
+    <a-col v-if="isOrganizer" class="container">
       <a-button
         type="primary"
         shape="round"
@@ -44,18 +50,17 @@ const showModal = () => {
     </a-col>
   </a-row>
   <a-typography-text
-    >На втором этапе важно выбрать место проведения и нанять
-    ведущего</a-typography-text
+    >Выбери место проведения и найми ведущего</a-typography-text
   >
   <a-row type="flex" justify="space-between" class="section">
     <a-col>
       <a-typography-text> Место проведения </a-typography-text>
-      <a-switch style="margin-left: 16px"></a-switch>
+      <a-switch v-model:checked="isPlace" style="margin-left: 16px"></a-switch>
     </a-col>
-    <a-col :span="12">
+    <a-col v-if="isPlace" :span="12">
       <a-input></a-input>
     </a-col>
-    <a-col class="container">
+    <a-col v-if="isPlace" class="container">
       <a-button
         :danger="placeFilter"
         type="primary"
@@ -71,32 +76,35 @@ const showModal = () => {
       ></span>
     </a-col>
   </a-row>
+  <div v-if="isPlace">
+    <div v-if="placeFilter"><PlaceFilter @hide-filter="hidePlaceFilter" /></div>
 
-  <div v-if="placeFilter"><PlaceFilter @hide-filter="hidePlaceFilter" /></div>
-
-  <a-row v-if="!placeFilter" class="cards-container">
-    <div v-for="i in 10" :key="i">
-      <EventsPlaceCard />
-    </div>
-    <div class="add_place" @click="showModal">
-      Добавь место
-      <span
-        class="mdi mdi-48px mdi-plus"
-        style="height: 48px; width: 48px"
-      ></span>
-    </div>
-  </a-row>
-
-  <a-checkbox v-if="!placeFilter">Выбрать все места проведения</a-checkbox>
+    <a-row v-if="!placeFilter" class="cards-container">
+      <div v-for="i in 10" :key="i">
+        <EventsPlaceCard />
+      </div>
+      <div class="add_place" @click="showModal">
+        Добавь место
+        <span
+          class="mdi mdi-48px mdi-plus"
+          style="height: 48px; width: 48px"
+        ></span>
+      </div>
+    </a-row>
+  </div>
+  <a-checkbox v-if="isPlace">Выбрать все места проведения</a-checkbox>
   <a-row type="flex" justify="space-between" class="section">
     <a-col>
       <a-typography-text> Ведущий </a-typography-text>
-      <a-switch style="margin-left: 16px"></a-switch>
+      <a-switch
+        v-model:checked="isCompere"
+        style="margin-left: 16px"
+      ></a-switch>
     </a-col>
-    <a-col :span="12">
+    <a-col v-if="isCompere" :span="12">
       <a-input></a-input>
     </a-col>
-    <a-col class="container">
+    <a-col v-if="isCompere" class="container">
       <a-button
         type="primary"
         shape="round"
@@ -110,7 +118,7 @@ const showModal = () => {
       ></span>
     </a-col>
   </a-row>
-  <a-row class="cards-container">
+  <a-row v-if="isCompere" class="cards-container">
     <a-col v-for="i in 4" :key="i">
       <div v-if="i != 4" class="card">
         <div
@@ -145,7 +153,9 @@ const showModal = () => {
       </div>
     </a-col>
   </a-row>
-  <a-checkbox style="margin: 8px 0 8px 0">Выбрать всех ведущих</a-checkbox>
+  <a-checkbox v-if="isCompere" style="margin: 8px 0 8px 0"
+    >Выбрать всех ведущих</a-checkbox
+  >
 
   <!-- Modal for addPlace -->
 

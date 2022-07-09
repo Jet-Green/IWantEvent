@@ -41,3 +41,16 @@ input{
       margin-left: #{$i*4}px; 
     }
   }
+// PA
+@for $i from 1 through 4 {
+  .pa-#{$i*4} { 
+    padding: #{$i*4}px; 
+  }
+}
+
+// PT
+@for $i from 1 through 4 {
+  .pt-#{$i*4} { 
+    padding-top: #{$i*4}px; 
+  }
+}

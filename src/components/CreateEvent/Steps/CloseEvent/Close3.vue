@@ -33,10 +33,17 @@ function addArtist() {
 </script>
 
 <template>
+  <div class="pt-16"><a-typography-text>Выбери артиста</a-typography-text></div>
+
   <a-row class="section" style="display: flex; justify-content: space-between">
-    <a-col><a-typography-text>Выбери артиста</a-typography-text></a-col>
-    <a-col :span="12"> <a-input placeholder="Начните водить имя"></a-input></a-col>
-    <a-col style="display:flex">
+    <a-col>
+      <a-typography-text>Артист</a-typography-text>
+      <a-switch style="margin-left: 16px"> </a-switch>
+    </a-col>
+    <a-col :span="12">
+      <a-input placeholder="Начните водить имя"></a-input
+    ></a-col>
+    <a-col style="display: flex">
       <a-button
         :danger="artistFilter"
         type="primary"
