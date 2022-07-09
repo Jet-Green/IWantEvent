@@ -22,7 +22,7 @@ const showModal = () => {
 <template>
   <div class="pt-16">
     <a-typography-text style="margin-bottom: 16px"
-      >Выбери организатора или создай мероприятие сами.
+      >Выбери организатора или создай мероприятие сам
     </a-typography-text>
   </div>
 
