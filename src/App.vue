@@ -8,8 +8,6 @@ import Footer from "./components/Footer.vue";
 
 const appState = useAppStateStore();
 
-
-
 function onResize() {
   if (window.innerWidth < 600) {
     appState.setMobileType();
@@ -35,13 +33,13 @@ onUnmounted(() => {
     <a-layout-content>
       <router-view />
     </a-layout-content>
-  <a-affix :offset-bottom="bottom">
-    <Footer />
-  </a-affix>
+    <a-affix>
+      <Footer />
+    </a-affix>
   </a-layout>
 </template>
 <style lang="scss" scoped>
-.main{
+.main {
   min-height: 100vh;
 }
 </style>
