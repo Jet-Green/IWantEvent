@@ -34,7 +34,7 @@ function addArtist() {
 </script>
 
 <template>
-  <div class="pt-16"><a-typography-text>Выбери артиста</a-typography-text></div>
+  <a-row class="section"><a-typography-text>Выбери артиста</a-typography-text></a-row>
 
   <a-row class="section" style="display: flex; justify-content: space-between">
     <a-col>
@@ -42,10 +42,10 @@ function addArtist() {
       <a-switch v-model:checked="isArtist" style="margin-left: 16px">
       </a-switch>
     </a-col>
-    <a-col v-if="isOrganizer" :span="12">
+    <a-col v-if="isArtist" :span="12">
       <a-input placeholder="Начните водить имя"></a-input
     ></a-col>
-    <a-col v-if="isOrganizer" style="display: flex">
+    <a-col v-if="isArtist" style="display: flex">
       <a-button
         :danger="artistFilter"
         type="primary"
