@@ -17,6 +17,7 @@ let selectedArtists = reactive([
 ]);
 
 const artistFilter = ref(false);
+const isArtist = ref(false);
 
 const hideArtistFilter = () => {
   artistFilter.value = false;
@@ -38,12 +39,13 @@ function addArtist() {
   <a-row class="section" style="display: flex; justify-content: space-between">
     <a-col>
       <a-typography-text>Артист</a-typography-text>
-      <a-switch style="margin-left: 16px"> </a-switch>
+      <a-switch v-model:checked="isArtist" style="margin-left: 16px">
+      </a-switch>
     </a-col>
-    <a-col :span="12">
+    <a-col v-if="isOrganizer" :span="12">
       <a-input placeholder="Начните водить имя"></a-input
     ></a-col>
-    <a-col style="display: flex">
+    <a-col v-if="isOrganizer" style="display: flex">
       <a-button
         :danger="artistFilter"
         type="primary"
@@ -59,31 +61,33 @@ function addArtist() {
       ></span
     ></a-col>
   </a-row>
-  <div v-if="!artistFilter">
-    <a-row style="display: flex; flex-wrap: wrap">
-      <ArtistCard
-        v-for="(card, index) in selectedArtists"
-        :key="index"
-        :artistCardInfoProps="card"
-      />
-      <div class="card last-card">
-        <div class="card-background">
-          <span
-            class="mdi mdi-48px mdi-plus"
-            style="height: 48px; width: 48px"
-          ></span>
+  <div v-if="isArtist">
+    <div v-if="!artistFilter">
+      <a-row style="display: flex; flex-wrap: wrap">
+        <ArtistCard
+          v-for="(card, index) in selectedArtists"
+          :key="index"
+          :artistCardInfoProps="card"
+        />
+        <div class="card last-card">
+          <div class="card-background">
+            <span
+              class="mdi mdi-48px mdi-plus"
+              style="height: 48px; width: 48px"
+            ></span>
+          </div>
+          <div class="content" style="text-align: center">
+            Добавьте своего артиста
+          </div>
         </div>
-        <div class="content" style="text-align: center">
-          Добавьте своего артиста
-        </div>
-      </div>
-    </a-row>
+      </a-row>
 
-    <div class="section">
-      <a-button type="link" @click="addArtist"> Добавьте ещё + </a-button>
+      <div class="section">
+        <a-button type="link" @click="addArtist"> Добавьте ещё + </a-button>
+      </div>
     </div>
+    <div v-else><ArtistFilter @hide-filter="hideArtistFilter" /></div>
   </div>
-  <div v-else><ArtistFilter @hide-filter="hideArtistFilter" /></div>
 </template>
 <style lang="scss" scoped>
 .section {
