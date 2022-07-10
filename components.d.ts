@@ -48,6 +48,7 @@ declare module '@vue/runtime-core' {
     Close4: typeof import('./src/components/CreateEvent/Steps/CloseEvent/Close4.vue')['default']
     Close5: typeof import('./src/components/CreateEvent/Steps/CloseEvent/Close5.vue')['default']
     CloseEvent: typeof import('./src/components/CreateEvent/CloseEvent.vue')['default']
+    CompereFilter: typeof import('./src/components/CreateEvent/Forms/CompereFilter.vue')['default']
     copy: typeof import('./src/components/CreateEvent/Forms/PlaceFilter copy.vue')['default']
     CreateEvent: typeof import('./src/components/CreateEvent/CreateEvent.vue')['default']
     EventsList: typeof import('./src/components/StartPage/EventsList.vue')['default']

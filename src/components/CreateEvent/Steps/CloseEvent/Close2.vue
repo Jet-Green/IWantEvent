@@ -110,8 +110,8 @@ const closeAddPlaceDialog = () => {
       </a-col>
       <a-col v-if="isCompere" class="container">
         <!-- кнопка фильтра ведущего -->
-        <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px"
-          @click="compereFilter = !compereFilter">
+        <a-button :danger="compereFilter" type="primary" shape="round"
+          style="display: flex; align-items: center; margin: 0 0 0 8px" @click="compereFilter = !compereFilter">
           <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-button>
         <!-- кнопка фильтра ведущего -->
