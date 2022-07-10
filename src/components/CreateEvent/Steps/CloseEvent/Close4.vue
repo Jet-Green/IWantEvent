@@ -2,6 +2,7 @@
 import { reactive, ref } from "vue";
 
 import PartnerCard from "../../../../components/Cards/PartnerCard.vue";
+import PartnerFilter from "../../Forms/PartnerFilter.vue";
 
 // все партнёры, приходят из базы данных
 let partners = reactive([
@@ -16,7 +17,7 @@ let partners = reactive([
     services: ["аренда света"],
   },
 ]);
-
+const partnerFilter = ref(false);
 const isPartner = ref(false);
 // выбранные партнёры, по ним идёт итерация
 let selectedPartners = reactive([
@@ -55,8 +56,10 @@ function addPartner() {
     ></a-col>
     <a-col v-if="isPartner" style="display: flex">
       <a-button
+        :danger="partnerFilter"
         type="primary"
         shape="round"
+        @click="partnerFilter = !partnerFilter"
         style="display: flex; align-items: center; margin: 0 0 0 8px"
       >
         <span class="mdi mdi-24px mdi-tune-variant"></span>
@@ -68,31 +71,34 @@ function addPartner() {
     ></a-col>
   </a-row>
   <a-row v-if="isPartner">
-    <div>
-      <a-row style="display: flex; flex-wrap: wrap">
-        <PartnerCard
-          v-for="(card, index) in selectedPartners"
-          :key="index"
-          :partnerCardInfoProps="card"
-        />
-        <div class="card last-card">
-          <div class="card-background">
-            <span
-              class="mdi mdi-48px mdi-plus"
-              style="height: 48px; width: 48px"
-            ></span>
+    <div v-if="!partnerFilter">
+      <div>
+        <a-row style="display: flex; flex-wrap: wrap">
+          <PartnerCard
+            v-for="(card, index) in selectedPartners"
+            :key="index"
+            :partnerCardInfoProps="card"
+          />
+          <div class="card last-card">
+            <div class="card-background">
+              <span
+                class="mdi mdi-48px mdi-plus"
+                style="height: 48px; width: 48px"
+              ></span>
+            </div>
+            <div class="content" style="text-align: center">
+              Добавьте партнера
+            </div>
           </div>
-          <div class="content" style="text-align: center">
-            Добавьте партнера
-          </div>
-        </div>
-      </a-row>
+        </a-row>
 
-      <div class="section">
-        <a-button type="link" @click="addPartner"> Добавьте ещё + </a-button>
+        <div class="section">
+          <a-button type="link" @click="addPartner"> Добавьте ещё + </a-button>
+        </div>
       </div>
-    </div></a-row
-  >
+    </div>
+     <div v-else><PartnerFilter @hide-filter="hideArtistFilter" /></div>
+  </a-row>
 </template>
 <style lang="scss" scoped>
 // для отделения от другого контента
