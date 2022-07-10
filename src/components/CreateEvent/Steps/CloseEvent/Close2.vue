@@ -1,17 +1,22 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
 import AddPlace from "../../Forms/AddPlace.vue";
 import PlaceFilter from "../../Forms/PlaceFilter.vue";
 
-const addPlace = ref(false);
-const placeFilter = ref(false);
-const isOrganizer = ref(false);
-const isPlace = ref(false);
-const isCompere = ref(false);
+let addPlace = ref(false);
+let placeFilter = ref(false);
+let compereFilter = ref(false);
+
+let isOrganizer = ref(false);
+let isPlace = ref(false);
+let isCompere = ref(false);
 
 const hidePlaceFilter = () => {
   placeFilter.value = false;
+};
+const hideCompereFilter = () => {
+  compereFilter.value = false;
 };
 
 const showModal = () => {
@@ -19,111 +24,179 @@ const showModal = () => {
 };
 const closeAddPlaceDialog = () => {
   addPlace.value = false;
-}
+};
 </script>
 
 <template>
   <div class="pt-16">
-    <a-typography-text class="mb-16">Выбери организатора или создай мероприятие сами.
+    <a-typography-text class="mb-16"
+      >Выбери организатора или создай мероприятие сами.
     </a-typography-text>
   </div>
 
-  <a-row type="flex" justify="space-between" class="section">
-    <a-col>
-      <a-typography-text class="mr-16">Организатор</a-typography-text>
-      <a-switch v-model:checked="isOrganizer" class="ml-16">
-      </a-switch>
-    </a-col>
-    <a-col v-if="isOrganizer" :span="12">
-      <a-input></a-input>
-    </a-col>
-    <a-col v-if="isOrganizer" class="container">
-      <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px">
-        <span class="mdi mdi-24px mdi-tune-variant"></span>
-      </a-button>
-      <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
-    </a-col>
-  </a-row>
-  <a-typography-text>Выбери место проведения и найми ведущего</a-typography-text>
-  <a-row type="flex" justify="space-between" class="section">
-    <a-col>
-      <a-typography-text class="mr-16"> Место проведения </a-typography-text>
-      <a-switch v-model:checked="isPlace"></a-switch>
-    </a-col>
-    <a-col v-if="isPlace" :span="12">
-      <a-input></a-input>
-    </a-col>
-    <a-col v-if="isPlace" class="container">
-      <a-button :danger="placeFilter" type="primary" shape="round" @click="placeFilter = !placeFilter"
-        style="display: flex; align-items: center; margin: 0 0 0 8px">
-        <span class="mdi mdi-24px mdi-tune-variant"></span>
-      </a-button>
-      <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
-    </a-col>
-  </a-row>
-  <div v-if="isPlace">
-    <div v-if="placeFilter">
-      <PlaceFilter @hide-filter="hidePlaceFilter" />
-    </div>
+  <!-- ОРГАНИЗАТОР -->
+  <div>
+    <a-row type="flex" justify="space-between" class="section">
+      <a-col>
+        <a-typography-text class="mr-16">Организатор</a-typography-text>
+        <a-switch v-model:checked="isOrganizer" class="ml-16"> </a-switch>
+      </a-col>
+      <a-col v-if="isOrganizer" :span="12">
+        <a-input />
+      </a-col>
+      <a-col v-if="isOrganizer" class="container">
+        <!-- кнопка фильтра организатора -->
+        <a-button
+          type="primary"
+          shape="round"
+          style="display: flex; align-items: center; margin: 0 0 0 8px"
+        >
+          <span class="mdi mdi-24px mdi-tune-variant"></span>
+        </a-button>
+        <!-- кнопка фильтра организатора -->
 
-    <a-row v-if="!placeFilter" class="cards-container">
-      <div v-for="i in 10" :key="i">
-        <EventsPlaceCard />
-      </div>
-      <div class="add_place" @click="showModal">
-        Добавь место
-        <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
-      </div>
+        <span
+          class="mdi mdi-24px mdi-information-outline"
+          style="margin-left: 16px"
+        ></span>
+      </a-col>
     </a-row>
   </div>
-  <a-checkbox v-if="isPlace">Выбрать все места проведения</a-checkbox>
-  <a-row type="flex" justify="space-between" class="section">
-    <a-col>
-      <a-typography-text class="mr-16"> Ведущий </a-typography-text>
-      <a-switch v-model:checked="isCompere"></a-switch>
-    </a-col>
-    <a-col v-if="isCompere" :span="12">
-      <a-input></a-input>
-    </a-col>
-    <a-col v-if="isCompere" class="container">
-      <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px">
-        <span class="mdi mdi-24px mdi-tune-variant"></span>
-      </a-button>
-      <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span>
-    </a-col>
-  </a-row>
-  <a-row v-if="isCompere" class="cards-container">
-    <a-col v-for="i in 4" :key="i">
-      <div v-if="i != 4" class="card">
-        <div class="card-background" :style="{
-          'background-image':
-            'url(https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg)',
-        }"></div>
-        <div class="content">
-          <a-typography-title :level="5">Адександр Золототарёв</a-typography-title>
-        </div>
+  <!-- ОРГАНИЗАТОР -->
+
+  <a-typography-text>Выбери место проведения и найми ведущего</a-typography-text>
+
+  <!-- МЕСТО ПРОВЕДЕНИЯ -->
+  <div>
+    <a-row type="flex" justify="space-between" class="section">
+      <a-col>
+        <a-typography-text class="mr-16"> Место проведения </a-typography-text>
+        <a-switch v-model:checked="isPlace"></a-switch>
+      </a-col>
+      <a-col v-if="isPlace" :span="12">
+        <a-input></a-input>
+      </a-col>
+      <a-col v-if="isPlace" class="container">
+        <!-- кнопка фильтра места проведения -->
+        <a-button
+          :danger="placeFilter"
+          type="primary"
+          shape="round"
+          @click="placeFilter = !placeFilter"
+          style="display: flex; align-items: center; margin: 0 0 0 8px"
+        >
+          <span class="mdi mdi-24px mdi-tune-variant"></span>
+        </a-button>
+        <!-- кнопка фильтра места проведения -->
+
+        <span
+          class="mdi mdi-24px mdi-information-outline"
+          style="margin-left: 16px"
+        ></span>
+      </a-col>
+    </a-row>
+    <div v-if="isPlace">
+      <div v-if="placeFilter">
+        <PlaceFilter @hide-filter="hidePlaceFilter" />
       </div>
-      <div v-else class="card last-card">
-        <div class="card-background" style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1 !impotant;
-          ">
+
+      <a-row v-else class="cards-container">
+        <div v-for="i in 10" :key="i">
+          <EventsPlaceCard />
+        </div>
+        <div class="add_place" @click="showModal">
+          Добавь место
           <span class="mdi mdi-48px mdi-plus" style="height: 48px; width: 48px"></span>
         </div>
-        <div class="content" style="text-align: center">Добавьте ведущего</div>
+      </a-row>
+    </div>
+    <a-checkbox v-if="isPlace">Выбрать все места проведения</a-checkbox>
+  </div>
+  <!-- МЕСТО ПРОВЕДЕНИЯ -->
+
+  <!-- ВЕДУЩИЙ -->
+  <div>
+    <a-row type="flex" justify="space-between" class="section">
+      <a-col>
+        <a-typography-text class="mr-16"> Ведущий </a-typography-text>
+        <a-switch v-model:checked="isCompere"></a-switch>
+      </a-col>
+      <a-col v-if="isCompere" :span="12">
+        <a-input></a-input>
+      </a-col>
+      <a-col v-if="isCompere" class="container">
+        <!-- кнопка фильтра ведущего -->
+        <a-button
+          type="primary"
+          shape="round"
+          style="display: flex; align-items: center; margin: 0 0 0 8px"
+          @click="compereFilter = !compereFilter"
+        >
+          <span class="mdi mdi-24px mdi-tune-variant"></span>
+        </a-button>
+        <!-- кнопка фильтра ведущего -->
+
+        <span
+          class="mdi mdi-24px mdi-information-outline"
+          style="margin-left: 16px"
+        ></span>
+      </a-col>
+    </a-row>
+    <!-- если выбрали ведущего -->
+    <div v-if="isCompere">
+      <div v-if="compereFilter">
+        <CompereFilter @hide-filter="hideCompereFilter" />
       </div>
-    </a-col>
-  </a-row>
-  <a-checkbox v-if="isCompere" style="margin: 8px 0 8px 0">Выбрать всех ведущих</a-checkbox>
+      <div v-else>
+        <a-row class="cards-container">
+          <a-col v-for="i in 4" :key="i">
+            <div v-if="i != 4" class="card">
+              <div
+                class="card-background"
+                :style="{
+                  'background-image':
+                    'url(https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg)',
+                }"
+              ></div>
+              <div class="content">
+                <a-typography-title :level="5">Адександр Золототарёв</a-typography-title>
+              </div>
+            </div>
+            <div v-else class="card last-card">
+              <div
+                class="card-background"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  opacity: 1 !impotant;
+                "
+              >
+                <span
+                  class="mdi mdi-48px mdi-plus"
+                  style="height: 48px; width: 48px"
+                ></span>
+              </div>
+              <div class="content" style="text-align: center">Добавьте ведущего</div>
+            </div>
+          </a-col>
+        </a-row>
+        <a-checkbox v-if="isCompere" style="margin: 8px 0 8px 0"
+          >Выбрать всех ведущих</a-checkbox
+        >
+      </div>
+    </div>
+  </div>
+  <!-- ВЕДУЩИЙ -->
 
   <!-- Modal for addPlace -->
-
-  <a-modal v-model:visible="addPlace" title="Добавление площадки" @ok="closeAddPlaceDialog">
+  <a-modal
+    v-model:visible="addPlace"
+    title="Добавление площадки"
+    @ok="closeAddPlaceDialog"
+  >
     <AddPlace />
   </a-modal>
-
   <!--End Modal for addPlace  -->
 </template>
 
