@@ -1,12 +1,11 @@
 <script setup></script>
 <template>
-    <a-row>Если у вас сложный заказ или вы что-то не нашли, сделайте запрос... А вдруг...</a-row>
   <a-row>
     <a-col style="margin: 10px 20px 20px 0px;">Тема запроса:</a-col>
     <a-col style="margin: 7px 0px 8px 0px;"><a-input></a-input></a-col>
   </a-row>
   <a-row>
-    <a-textarea placeholder="Текст запроса" style="height: 300px;"></a-textarea>
+    <a-textarea placeholder="Текст запроса" auto-size/>
   </a-row>
   <a-row style="margin: 10px 0px 10px 0px;">Выберите кому адресовать данный запрос или отметьте всех</a-row>
   <a-row>
