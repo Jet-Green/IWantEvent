@@ -3,6 +3,7 @@ import { ref } from "vue";
 import EventsPlaceCard from "../../../Cards/EventsPlaceCard.vue";
 import AddPlace from "../../Forms/AddPlace.vue";
 import PlaceFilter from "../../Forms/PlaceFilter.vue";
+import PartnerFilter from "../../Forms/PartnerFilter.vue";
 
 let addPlace = ref(false);
 let placeFilter = ref(false);

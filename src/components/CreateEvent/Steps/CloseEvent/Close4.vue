@@ -45,15 +45,14 @@ function addPartner() {
       >Выбери Партнёра (свет, звук, транспорт, охрана ...)
     </a-typography-text>
   </a-row>
+
+
   <a-row class="section" style="display: flex; justify-content: space-between">
     <a-col>
       <a-typography-text>Партнер</a-typography-text>
-      <a-switch v-model:checked="isPartner" style="margin-left: 16px">
-      </a-switch>
+      <a-switch v-model:checked="isPartner" style="margin-left: 16px"> </a-switch>
     </a-col>
-    <a-col v-if="isPartner" :span="12">
-      <a-input placeholder="Поиск"></a-input
-    ></a-col>
+    <a-col v-if="isPartner" :span="12"> <a-input placeholder="Поиск"></a-input></a-col>
     <a-col v-if="isPartner" style="display: flex">
       <a-button
         :danger="partnerFilter"
@@ -64,13 +63,12 @@ function addPartner() {
       >
         <span class="mdi mdi-24px mdi-tune-variant"></span>
       </a-button>
-      <span
-        class="mdi mdi-24px mdi-information-outline"
-        style="margin-left: 16px"
-      ></span
+      <span class="mdi mdi-24px mdi-information-outline" style="margin-left: 16px"></span
     ></a-col>
   </a-row>
-  <a-row v-if="isPartner">
+
+
+  <div v-if="isPartner">
     <div v-if="!partnerFilter">
       <div>
         <a-row style="display: flex; flex-wrap: wrap">
@@ -86,9 +84,7 @@ function addPartner() {
                 style="height: 48px; width: 48px"
               ></span>
             </div>
-            <div class="content" style="text-align: center">
-              Добавьте партнера
-            </div>
+            <div class="content" style="text-align: center">Добавьте партнера</div>
           </div>
         </a-row>
 
@@ -97,8 +93,8 @@ function addPartner() {
         </div>
       </div>
     </div>
-     <div v-else><PartnerFilter @hide-filter="hideArtistFilter" /></div>
-  </a-row>
+    <div v-else><PartnerFilter @hide-filter="hideArtistFilter" /></div>
+  </div>
 </template>
 <style lang="scss" scoped>
 // для отделения от другого контента
