@@ -47,7 +47,7 @@ onMounted(() => {
 
 <template>
   <a-col :span="20">
-    <a-typography-title :level="2">Собираемые концерты</a-typography-title>
+    <a-typography-title :level="2" class="mt-16">Собираемые концерты</a-typography-title>
     <a-row type="flex" justify="center">
       <a-col>
         <div ref="carousel_container"></div>
