@@ -10,8 +10,30 @@ const router = useRouter();
 
 const poster = reactive({
   cards: [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22,
-    23, 24, 25,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
   ],
 });
 let carouselWidth = ref(0);
@@ -33,6 +55,10 @@ let onResize = () => {
 
 function createEvent() {
   router.push("/create-event");
+}
+
+function toEventPage() {
+  router.push("/event");
 }
 
 const postsCount = computed(() => {
@@ -57,17 +83,14 @@ onMounted(() => {
           snapAlign="start"
           :wrapAround="true"
         >
-          <Slide
-            v-for="(cardsGroup, index) in cards"
-            :key="index"
-            class="unselectable"
-          >
+          <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
             <div class="carousel__item" style="display: flex; flex-wrap: wrap">
               <div
                 class="card"
                 :class="cardsGroup.length == 1 ? 'first_card' : ''"
                 v-for="(card, i) in cardsGroup"
                 :key="i"
+                @click="toEventPage"
               >
                 <a-image
                   src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
