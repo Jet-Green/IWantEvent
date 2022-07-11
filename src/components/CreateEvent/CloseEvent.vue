@@ -27,6 +27,10 @@ let steps = reactive([
   },
 ]);
 
+function changeStep(step) {
+  current.value=step;
+}
+
 const next = () => {
   current.value++;
 };
@@ -59,7 +63,7 @@ const prev = () => {
     <Close4 />
   </div>
   <div v-if="current == 4">
-    <Close5 />
+    <Close5 @change-step="changeStep" />
   </div>
 
   <div class="steps-action">
@@ -73,7 +77,7 @@ const prev = () => {
     </a-button>
 
     <a-button v-if="current == steps.length - 1" type="primary" shape="round">
-      Создать
+      Отправить
     </a-button>
 
     <a-button
