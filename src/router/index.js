@@ -25,8 +25,12 @@ const router = createRouter({
       path: '/card',
       name: 'Card',
       component: () => import('../components/Cards/EventsPlaceCard.vue')
+    },
+    {
+      path: '/accept',
+      name: 'accept',
+      component: () => import('../components/Cards/AcceptedBy.vue')
     }
-
   ]
 })
 
