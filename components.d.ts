@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     AModal: typeof import('ant-design-vue/es')['Modal']
     APageHeader: typeof import('ant-design-vue/es')['PageHeader']
+    AProgress: typeof import('ant-design-vue/es')['Progress']
     ARow: typeof import('ant-design-vue/es')['Row']
     ArtistCard: typeof import('./src/components/Cards/ArtistCard.vue')['default']
     ArtistFilter: typeof import('./src/components/CreateEvent/Forms/ArtistFilter.vue')['default']

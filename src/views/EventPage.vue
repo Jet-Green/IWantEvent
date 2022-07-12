@@ -1,14 +1,18 @@
 <script setup>
+import { ref } from 'vue'
 import { useRoute } from "vue-router";
 
 let route = useRoute();
 let type = route.params.type;
 
+let current = ref(100000)
+let total = ref(200000)
+
 </script>
 <template>
   <!-- wrapper -->
   <a-row class="mt-8" type="flex" justify="center">
-    <a-col :span="23">
+    <a-col :xs="23" :md="16">
 
 
       <!-- header -->
@@ -67,7 +71,42 @@ let type = route.params.type;
       </a-row>
       <!-- image and description -->
 
-
+      <div v-if="type == 'event'">
+        <a-typography-title :level="5">Собрано {{ current }} из {{ total }} руб.</a-typography-title>
+        <a-progress trailColor="#b4b5b8" style="height: 40px" :percent="(current / total) * 100"
+          :format="percent => `${total} руб.`" />
+        <a-typography-paragraph>
+          Минимальная сумма 1500 руб. <br>
+          Осталось дней: 20
+        </a-typography-paragraph>
+        <a-typography-title :level="5">Дополнительные опции</a-typography-title>
+        <a-row>
+          <!-- сюда опции -->
+          <!-- сюда опции -->
+          <!-- сюда опции -->
+          <!-- сюда опции -->
+          <!-- сюда опции -->
+          <a-button type="link" style="padding-left: 0px !important;">Показать все опции</a-button>
+        </a-row>
+        <a-button type="primary">Поддержать сбор</a-button>
+        <a-typography-title :level="5">Подтвердились</a-typography-title>
+        <a-row>
+          <!-- сюда подтверждённые -->
+          <!-- сюда подтверждённые -->
+          <!-- сюда подтверждённые -->
+          <!-- сюда подтверждённые -->
+          <!-- сюда подтверждённые -->
+        </a-row>
+        <a-typography-title :level="5">Собираемые рядом</a-typography-title>
+        <a-row>
+          <!-- сюда собираемые рядом -->
+          <!-- сюда собираемые рядом -->
+          <!-- сюда собираемые рядом -->
+          <!-- сюда собираемые рядом -->
+        </a-row>
+      </div>
+      <div v-else>
+      </div>
     </a-col>
   </a-row>
 </template>
