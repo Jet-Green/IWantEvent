@@ -55,12 +55,13 @@ let total = ref(200000);
             <a-col :span="12" type="flex" justify="start"> <b>Время: </b>hh-mm </a-col>
           </a-row>
           <b>Адрес: </b>город, улица, дома, квартира
-          <a-row style="font-size: 30px">
+          <div style="display: flex; justify-content: end; font-size: 30px">
+            <span class="mdi mdi-heart-outline"></span>
+            <a-divider type="vertical" style="height: 30px" />
+            <span class="mdi mdi-bookmark-outline"></span>
+          </div>
+          <a-row>
             <a-col>
-              <span class="mdi mdi-heart-outline"></span>
-            </a-col>
-            <a-col>
-              <span class="mdi mdi-star-outline"></span>
             </a-col>
           </a-row>
         </a-col>
@@ -70,7 +71,7 @@ let total = ref(200000);
       <div v-if="type == 'event'">
         <a-typography-title :level="5">Собрано {{ current }} из {{ total }} руб.</a-typography-title>
         <a-progress trailColor="#b4b5b8" style="height: 40px" :percent="(current / total) * 100"
-          :format="(percent) => `${total} руб.`" />
+          :format="(percent) => ``" />
         <a-typography-paragraph>
           Минимальная сумма 1500 руб. <br />
           Осталось дней: 20
