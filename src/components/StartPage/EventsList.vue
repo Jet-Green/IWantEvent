@@ -58,7 +58,7 @@ function createEvent() {
 }
 
 function toEventPage() {
-  router.push("/event");
+  router.push({ name: 'EventPage', params: { type: 'event' } })
 }
 
 const postsCount = computed(() => {
@@ -77,26 +77,14 @@ onMounted(() => {
     <a-row type="flex" justify="center">
       <a-col>
         <div ref="carousel_container"></div>
-        <Carousel
-          :itemsToShow="postsCount"
-          :autoplay="15000"
-          snapAlign="start"
-          :wrapAround="true"
-        >
+        <Carousel :itemsToShow="postsCount" :autoplay="15000" snapAlign="start" :wrapAround="true">
           <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
             <div class="carousel__item" style="display: flex; flex-wrap: wrap">
-              <div
-                class="card"
-                :class="cardsGroup.length == 1 ? 'first_card' : ''"
-                v-for="(card, i) in cardsGroup"
-                :key="i"
-                @click="toEventPage"
-              >
+              <div class="card" :class="cardsGroup.length == 1 ? 'first_card' : ''" v-for="(card, i) in cardsGroup"
+                :key="i" @click="toEventPage">
                 <a-image
                   src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
-                  :preview="false"
-                  style="aspect-ratio: 1; object-fit: cover"
-                ></a-image>
+                  :preview="false" style="aspect-ratio: 1; object-fit: cover"></a-image>
               </div>
             </div>
           </Slide>
@@ -117,19 +105,11 @@ onMounted(() => {
           <a-button type="primary" shape="round"> Показать все </a-button>
         </div>
         <div v-else>
-          <a-button
-            type="primary"
-            shape="round"
-            style="display: flex; align-items: center"
-          >
+          <a-button type="primary" shape="round" style="display: flex; align-items: center">
             <span class="mdi mdi-24px mdi-arrow-up-drop-circle-outline"></span>
           </a-button>
         </div>
-        <a-button
-          type="primary"
-          shape="round"
-          style="display: flex; align-items: center; margin: 0 0 0 8px"
-        >
+        <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px">
           <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-button>
       </a-col>
