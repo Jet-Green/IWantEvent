@@ -20,24 +20,27 @@ let text = ref("Мерч + 500 руб");
 .place_card {
   margin: 8px;
   width: 160px;
-  height: 160px;
-  aspect-ratio: 1;
+  // height: 160px;
   box-sizing: border-box;
   font-size: 12px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
+
   .for_img {
+    aspect-ratio: 1;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    // height: 100%;
     border-radius: 8px 8px 0 0;
+
     img {
       height: 100%;
       width: 100%;
     }
   }
+
   .for_text {
     height: 25%;
     font-weight: bold;
