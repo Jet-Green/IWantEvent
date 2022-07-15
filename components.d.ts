@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AAffix: typeof import('ant-design-vue/es')['Affix']
+    AAvatar: typeof import('ant-design-vue/es')['Avatar']
     ABadgeRibbon: typeof import('ant-design-vue/es')['BadgeRibbon']
     AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
@@ -54,6 +55,7 @@ declare module '@vue/runtime-core' {
     CompereFilter: typeof import('./src/components/CreateEvent/Forms/CompereFilter.vue')['default']
     copy: typeof import('./src/components/CreateEvent/Forms/PlaceFilter copy.vue')['default']
     CreateEvent: typeof import('./src/components/CreateEvent/CreateEvent.vue')['default']
+    EventAdditionalOption: typeof import('./src/components/Cards/EventAdditionalOption.vue')['default']
     EventsList: typeof import('./src/components/StartPage/EventsList.vue')['default']
     EventsPlaceCard: typeof import('./src/components/Cards/EventsPlaceCard.vue')['default']
     FirstStep: typeof import('./src/components/CreateEvent/Steps/OpenEvent/FirstStep.vue')['default']
