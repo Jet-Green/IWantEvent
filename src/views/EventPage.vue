@@ -2,6 +2,9 @@
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
+import EventAdditionalOption from '../components/Cards/EventAdditionalOption.vue'
+import AcceptedBy from '../components/Cards/AcceptedBy.vue'
+
 let route = useRoute();
 let type = route.params.type;
 
@@ -77,21 +80,23 @@ let total = ref(200000);
           Осталось дней: 20
         </a-typography-paragraph>
         <a-typography-title :level="5">Дополнительные опции</a-typography-title>
+        <a-row type="flex" justify="center">
+          <!-- опции -->
+          <a-col v-for="i in 5">
+            <EventAdditionalOption />
+          </a-col>
+          <!-- опции -->
+        </a-row>
         <a-row>
-          <!-- опции -->
-          <!-- опции -->
-          <!-- опции -->
-          <!-- опции -->
-          <!-- опции -->
           <a-button type="link" style="padding-left: 0px !important">Показать все опции</a-button>
         </a-row>
         <a-button type="primary">Поддержать сбор</a-button>
-        <a-typography-title :level="5">Подтвердились</a-typography-title>
+        <a-typography-title :level="5" class="mt-16">Подтвердились</a-typography-title>
         <a-row>
           <!-- подтверждённые -->
-          <!-- подтверждённые -->
-          <!-- подтверждённые -->
-          <!-- подтверждённые -->
+          <a-col v-for="i in 4" class="ma-16">
+            <AcceptedBy />
+          </a-col>
           <!-- подтверждённые -->
         </a-row>
         <a-typography-title :level="5">Собираемые рядом</a-typography-title>
