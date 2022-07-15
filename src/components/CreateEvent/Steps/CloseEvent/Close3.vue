@@ -17,6 +17,7 @@ let selectedArtists = reactive([
 ]);
 
 const artistFilter = ref(false);
+const isArtist = ref(false);
 
 const hideArtistFilter = () => {
   artistFilter.value = false;
@@ -33,58 +34,60 @@ function addArtist() {
 </script>
 
 <template>
-  <a-row class="section">
-    <a-typography-text>Теперь важно определиться с артистами</a-typography-text>
+  <a-row class="section"><a-typography-text>Выбери артиста</a-typography-text></a-row>
+
+  <a-row class="section" style="display: flex; justify-content: space-between">
+    <a-col>
+      <a-typography-text>Артист</a-typography-text>
+      <a-switch v-model:checked="isArtist" style="margin-left: 16px">
+      </a-switch>
+    </a-col>
+    <a-col v-if="isArtist" :span="12">
+      <a-input placeholder="Начните водить имя"></a-input
+    ></a-col>
+    <a-col v-if="isArtist" style="display: flex">
+      <a-button
+        :danger="artistFilter"
+        type="primary"
+        shape="round"
+        @click="artistFilter = !artistFilter"
+        style="display: flex; align-items: center; margin: 0 0 0 8px"
+      >
+        <span class="mdi mdi-24px mdi-tune-variant"></span>
+      </a-button>
+      <span
+        class="mdi mdi-24px mdi-information-outline"
+        style="margin-left: 16px"
+      ></span
+    ></a-col>
   </a-row>
-  <a-row justify="end">
-    <a-button
-      type="primary"
-      shape="round"
-      @click="artistFilter = !artistFilter"
-      style="display: flex; align-items: center; margin: 0 0 0 8px"
-    >
-      <span class="mdi mdi-24px mdi-tune-variant"></span>
-    </a-button>
-  </a-row>
-  <div v-if="!artistFilter">
-    <div v-for="(card, index) in selectedArtists" :key="index" class="section">
-      <a-row type="flex" justify="space-between">
-        <a-col>
-          <a-typography-text>Артист №{{ card.number }}</a-typography-text>
-        </a-col>
-        <a-col :span="12">
-          <a-input
-            placeholder="Начните водить имя"
-            v-model:value="selectedArtists[card.number - 1].artistName"
-          ></a-input>
-        </a-col>
-        <a-col style="display: flex; flex-direction: row">
-          <span
-            class="mdi mdi-24px mdi-information-outline"
-            style="margin-left: 16px"
-          ></span>
-        </a-col>
+  <div v-if="isArtist">
+    <div v-if="!artistFilter">
+      <a-row style="display: flex; flex-wrap: wrap">
+        <ArtistCard
+          v-for="(card, index) in selectedArtists"
+          :key="index"
+          :artistCardInfoProps="card"
+        />
+        <div class="card last-card">
+          <div class="card-background">
+            <span
+              class="mdi mdi-48px mdi-plus"
+              style="height: 48px; width: 48px"
+            ></span>
+          </div>
+          <div class="content" style="text-align: center">
+            Добавьте своего артиста
+          </div>
+        </div>
       </a-row>
-      <ArtistCard :artistCardInfoProps="card" />
-    </div>
 
-    <div class="section">
-      <a-button type="link" @click="addArtist"> Добавьте ещё + </a-button>
-    </div>
-
-    <div class="card last-card">
-      <div class="card-background">
-        <span
-          class="mdi mdi-48px mdi-plus"
-          style="height: 48px; width: 48px"
-        ></span>
-      </div>
-      <div class="content" style="text-align: center">
-        Добавьте своего артиста
+      <div class="section">
+        <a-button type="link" @click="addArtist"> Добавьте ещё + </a-button>
       </div>
     </div>
+    <div v-else><ArtistFilter @hide-filter="hideArtistFilter" /></div>
   </div>
-  <div v-else><ArtistFilter @hide-filter="hideArtistFilter" /></div>
 </template>
 <style lang="scss" scoped>
 .section {
