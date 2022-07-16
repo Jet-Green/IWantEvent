@@ -5,6 +5,7 @@ import { useRoute } from "vue-router";
 import EventAdditionalOption from '../components/EventPage/EventAdditionalOption.vue'
 import AcceptedBy from '../components/EventPage/AcceptedBy.vue'
 import PlacesScheme from '../components/EventPage/PlacesScheme.vue'
+import Map from '../components/EventPage/Map.vue'
 
 let route = useRoute();
 let type = route.params.type;
@@ -120,6 +121,7 @@ let total = ref(200000);
         <!-- </a-row> -->
         <a-typography-title :level="5" class="mt-16">Как добраться</a-typography-title>
         <a-row>
+          <Map />
           <!-- КАК ДОБРАТЬСЯ -->
           <!-- КАК ДОБРАТЬСЯ -->
           <!-- КАК ДОБРАТЬСЯ -->

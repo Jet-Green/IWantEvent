@@ -63,6 +63,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./src/components/Header.vue')['default']
     Information: typeof import('./src/components/StartPage/Information.vue')['default']
     LastStep: typeof import('./src/components/CreateEvent/Steps/OpenEvent/LastStep.vue')['default']
+    Map: typeof import('./src/components/EventPage/Map.vue')['default']
     NextButton: typeof import('./src/components/StartPage/NextButton.vue')['default']
     Offer: typeof import('./src/components/StartPage/Offer.vue')['default']
     OpenEvent: typeof import('./src/components/CreateEvent/OpenEvent.vue')['default']

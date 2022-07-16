@@ -12,8 +12,8 @@ let placesMatrix = reactive(
 </script>
 <template>
   <div class="scheme-container">
-    <a-row v-for="(row, rowIndex) in placesMatrix" :key="index" type="flex" justify="space-between">
-      <a-col v-for="(col, colIndex) in row" :span="3" class="scheme-item ma-8">
+    <a-row v-for="(row, rowIndex) in placesMatrix" :key="rowIndex" type="flex" justify="space-between">
+      <a-col v-for="(col, colIndex) in row" :key="colIndex" :span="3" class="scheme-item ma-8">
         <div v-if="rowIndex == 0">
           Место {{ colIndex + 1 }}
         </div>
