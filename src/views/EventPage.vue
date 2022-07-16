@@ -2,8 +2,9 @@
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
-import EventAdditionalOption from '../components/Cards/EventAdditionalOption.vue'
-import AcceptedBy from '../components/Cards/AcceptedBy.vue'
+import EventAdditionalOption from '../components/EventPage/EventAdditionalOption.vue'
+import AcceptedBy from '../components/EventPage/AcceptedBy.vue'
+import PlacesScheme from '../components/EventPage/PlacesScheme.vue'
 
 let route = useRoute();
 let type = route.params.type;
@@ -112,12 +113,11 @@ let total = ref(200000);
       <div v-else>
         <a-button type="primary" shape="round">Купить билет</a-button>
         <a-typography-title :level="5" class="mt-16">Схема зала</a-typography-title>
-        <a-row>
-          <!-- СХЕМА ЗАЛА -->
-          <!-- СХЕМА ЗАЛА -->
-          <!-- СХЕМА ЗАЛА -->
-          <!-- СХЕМА ЗАЛА -->
-        </a-row>
+        <!-- <a-row> -->
+        <!-- СХЕМА ЗАЛА -->
+        <PlacesScheme />
+        <!-- СХЕМА ЗАЛА -->
+        <!-- </a-row> -->
         <a-typography-title :level="5" class="mt-16">Как добраться</a-typography-title>
         <a-row>
           <!-- КАК ДОБРАТЬСЯ -->

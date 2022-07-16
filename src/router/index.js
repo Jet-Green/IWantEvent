@@ -23,11 +23,6 @@ const router = createRouter({
       ]
     },
     {
-      path: '/card',
-      name: 'Card',
-      component: () => import('../components/Cards/EventsPlaceCard.vue')
-    },
-    {
       path: '/event',
       name: 'EventPage',
       component: EventPage
