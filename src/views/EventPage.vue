@@ -6,6 +6,7 @@ import EventAdditionalOption from '../components/EventPage/EventAdditionalOption
 import AcceptedBy from '../components/EventPage/AcceptedBy.vue'
 import PlacesScheme from '../components/EventPage/PlacesScheme.vue'
 import Map from '../components/EventPage/Map.vue'
+import EventCard from '../components/Cards/EventCard.vue'
 
 let route = useRoute();
 let type = route.params.type;
@@ -108,8 +109,11 @@ let total = ref(200000);
         <a-typography-title :level="5">Собираемые рядом</a-typography-title>
         <a-row>
           <!-- собираемые рядом -->
-          <!-- собираемые рядом -->
-          <!-- собираемые рядом -->
+          <a-col v-for="i in 5">
+            <EventCard @click="toEventPage"
+              image="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
+              eventName="БИ-2" :fixedWidth="true" />
+          </a-col>
           <!-- собираемые рядом -->
         </a-row>
       </div>
@@ -125,17 +129,18 @@ let total = ref(200000);
         <!-- </a-row> -->
         <a-typography-title :level="5" class="mt-16">Как добраться</a-typography-title>
         <a-row>
+          <!-- КАК ДОБРАТЬСЯ -->
           <Map />
           <!-- КАК ДОБРАТЬСЯ -->
-          <!-- КАК ДОБРАТЬСЯ -->
-          <!-- КАК ДОБРАТЬСЯ -->
-          <!-- КАК ДОБРАТЬСЯ -->
         </a-row>
-        <a-typography-title :level="5">Рекомендуем</a-typography-title>
+        <a-typography-title :level="5" class="mt-16">Рекомендуем</a-typography-title>
         <a-row>
           <!-- рекомендуемые -->
-          <!-- рекомендуемые -->
-          <!-- рекомендуемые -->
+          <a-col v-for="i in 5">
+            <EventCard @click="toEventPage"
+              image="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
+              eventName="БИ-2" :fixedWidth="true" />
+          </a-col>
           <!-- рекомендуемые -->
         </a-row>
       </div>

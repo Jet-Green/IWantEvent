@@ -57,6 +57,7 @@ declare module '@vue/runtime-core' {
     copy: typeof import('./src/components/CreateEvent/Forms/PlaceFilter copy.vue')['default']
     CreateEvent: typeof import('./src/components/CreateEvent/CreateEvent.vue')['default']
     EventAdditionalOption: typeof import('./src/components/EventPage/EventAdditionalOption.vue')['default']
+    EventCard: typeof import('./src/components/Cards/EventCard.vue')['default']
     EventsList: typeof import('./src/components/StartPage/EventsList.vue')['default']
     EventsPlaceCard: typeof import('./src/components/Cards/EventsPlaceCard.vue')['default']
     FirstStep: typeof import('./src/components/CreateEvent/Steps/OpenEvent/FirstStep.vue')['default']
