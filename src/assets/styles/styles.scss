@@ -1,10 +1,12 @@
 @import url("./ant_style.scss");
 @import url("./animations.scss");
 
+$primary-color: #c0004e;
+$success-color: #709d5a;
+
 html,
 body {
   overflow-x: hidden;
-
 }
 
 input {
@@ -21,6 +23,10 @@ input {
 
 .align-center {
   align-items: center;
+}
+
+.ant-progress-bg {
+  background-color: $success-color !important;
 }
 
 // MA

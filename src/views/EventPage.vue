@@ -82,21 +82,25 @@ let total = ref(200000);
           Осталось дней: 20
         </a-typography-paragraph>
         <a-typography-title :level="5">Дополнительные опции</a-typography-title>
-        <a-row type="flex" justify="center">
+        <a-row>
           <!-- опции -->
           <a-col v-for="i in 5">
             <EventAdditionalOption />
           </a-col>
           <!-- опции -->
         </a-row>
-        <a-row>
-          <a-button type="link" style="padding-left: 0px !important">Показать все опции</a-button>
+        <a-row type="flex" justify="space-between" class="mt-4">
+          <a-col>
+            <a-button type="primary" shape="round">Поддержать сбор</a-button>
+          </a-col>
+          <a-col>
+            <a-button type="link">Показать все опции</a-button>
+          </a-col>
         </a-row>
-        <a-button type="primary">Поддержать сбор</a-button>
         <a-typography-title :level="5" class="mt-16">Подтвердились</a-typography-title>
         <a-row>
           <!-- подтверждённые -->
-          <a-col v-for="i in 4" class="ma-16">
+          <a-col v-for="i in 4" class="ma-8">
             <AcceptedBy />
           </a-col>
           <!-- подтверждённые -->
