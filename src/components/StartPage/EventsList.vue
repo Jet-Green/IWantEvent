@@ -62,7 +62,7 @@ function toEventPage() {
 }
 
 const postsCount = computed(() => {
-  return carouselWidth.value / 210;
+  return carouselWidth.value / 270;
 });
 
 onMounted(() => {
@@ -77,14 +77,19 @@ onMounted(() => {
     <a-row type="flex" justify="center">
       <a-col>
         <div ref="carousel_container"></div>
-        <Carousel :itemsToShow="postsCount" :autoplay="15000" snapAlign="start" :wrapAround="true">
+        <Carousel :itemsToShow="postsCount" :autoplay="25000" snapAlign="start" :wrapAround="true">
           <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
             <div class="carousel__item" style="display: flex; flex-wrap: wrap">
               <div class="card" :class="cardsGroup.length == 1 ? 'first_card' : ''" v-for="(card, i) in cardsGroup"
                 :key="i" @click="toEventPage">
-                <a-image
-                  src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
-                  :preview="false" style="aspect-ratio: 1; object-fit: cover"></a-image>
+                <div class="for_img">
+                  <img
+                    src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png"
+                    alt="event" />
+                </div>
+                <div class="for_text">
+                  БИ-2
+                </div>
               </div>
             </div>
           </Slide>
@@ -116,11 +121,48 @@ onMounted(() => {
     </a-row>
   </a-col>
 </template>
-<style scoped>
+<style scoped lang="scss">
 .unselectable {
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+}
+
+.first_card {
+  .for_text {
+    font-size: 17px !important;
+  }
+}
+
+.card {
+  margin: 8px;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+
+  .for_img {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    border-radius: 8px 8px 0 0;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .for_text {
+    height: 15%;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
 }
 </style>
