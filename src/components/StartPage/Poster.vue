@@ -3,7 +3,9 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 import { ref, reactive, computed, onMounted } from "vue";
 import { useAppStateStore } from "@/stores/appState";
+import { useRouter } from "vue-router";
 
+let router = useRouter()
 const appState = useAppStateStore();
 
 const poster = reactive({
@@ -29,8 +31,12 @@ let onResize = () => {
   carouselWidth.value = carousel_container.value.clientWidth;
 };
 
+function toEventPage() {
+  router.push({ name: 'EventPage', params: { type: 'poster' } })
+}
+
 const postsCount = computed(() => {
-  return carouselWidth.value / 210;
+  return carouselWidth.value / 270;
 });
 
 onMounted(() => {
@@ -45,30 +51,13 @@ onMounted(() => {
     <a-row>
       <a-col>
         <div ref="carousel_container"></div>
-        <Carousel
-          :itemsToShow="postsCount"
-          :autoplay="15000"
-          snapAlign="start"
-          :wrapAround="true"
-        >
-          <Slide
-            v-for="(cardsGroup, index) in cards"
-            :key="index"
-            class="unselectable"
-          >
+        <Carousel :itemsToShow="postsCount" :autoplay="25000" snapAlign="start" :wrapAround="true">
+          <Slide v-for="(cardsGroup, index) in cards" :key="index" class="unselectable">
             <div class="carousel__item" style="display: flex; flex-wrap: wrap">
-              <div
-                class="card"
-                :class="cardsGroup.length == 1 ? 'first_card' : ''"
-                v-for="(card, i) in cardsGroup"
-                :key="i"
-              >
-                <a-image
-                  src="https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg"
-                  :preview="false"
-                  style="aspect-ratio: 1; object-fit: cover"
-                ></a-image>
-              </div>
+              <EventCard :class="cardsGroup.length == 1 ? 'first_card' : ''" v-for="(card, i) in cardsGroup" :key="i"
+                @click="toEventPage"
+                image="https://www.soyuz.ru/public/uploads/files/3/6977740/20170323104022e366171b00.jpg"
+                eventName="БИ-2" :fixedWidth="false" />
             </div>
           </Slide>
 
@@ -84,20 +73,12 @@ onMounted(() => {
           <a-button type="primary" shape="round"> Показать все </a-button>
         </div>
         <div v-else>
-          <a-button
-            type="primary"
-            shape="round"
-            style="display: flex; align-items: center"
-          >
+          <a-button type="primary" shape="round" style="display: flex; align-items: center">
             <span class="mdi mdi-24px mdi-arrow-up-drop-circle-outline"></span>
           </a-button>
         </div>
 
-        <a-button
-          type="primary"
-          shape="round"
-          style="display: flex; align-items: center; margin: 0 0 0 8px"
-        >
+        <a-button type="primary" shape="round" style="display: flex; align-items: center; margin: 0 0 0 8px">
           <span class="mdi mdi-24px mdi-tune-variant"></span>
         </a-button>
       </a-col>
@@ -120,6 +101,12 @@ onMounted(() => {
   .first_card {
     width: 98%;
     height: 98%;
+  }
+}
+
+.first_card {
+  .for_text {
+    font-size: 17px !important;
   }
 }
 
